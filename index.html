@@ -317,13 +317,13 @@ document.getElementById("cartTxt").textContent=🛒 ${cart.length} plato(s) ($${
 openChat();
 setTimeout(()=>{bot(✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.);chips(["Seguir viendo menú","Finalizar pedido"])},150);
 }
-function sendWA(){
-let m="Hola Tu Punto Inca, mi pedido es:\n\n";
-if(cart.length){cart.forEach((x,i)=>m+=${i+1}. ${x.name} - $${x.price}\n);m+=\n*Total:* $${cart.reduce((s,x)=>s+x.price,0)}}
-else m+="Quisiera hacer una consulta sobre el menú.";
-window.location.href=https://whatsapp.com{encodeURIComponent(m)};
-}
-renderMenu();                                                                                                                                       
-    </script>
+    function sendWA(){
+      var m="Hola *Tu Punto Inca*, mi pedido es:\n\n";
+      if(cart.length){cart.forEach(function(x,i){m+=(i+1)+". "+x.name+" - $"+x.price+"\n"});m+="\n*Total:* $"+cart.reduce(function(s,x){return s+x.price},0)}
+      else{m+="Quisiera hacer una consulta sobre el menú."}
+      window.location.href="https://whatsapp.com"+encodeURIComponent(m);
+    }
+    renderMenu();
+  </script>
 </body>
 </html>
