@@ -135,7 +135,7 @@
         <ul>
           <li><strong>Local:</strong> Tu Punto Inca (Cabudare / Barquisimeto)</li>
           <li><strong>Horario:</strong> Lunes a Domingo hasta las 7:00 PM</li>
-          <li><strong>WhatsApp:</strong> <a href="https://wa.me" target="_blank">(0422) 100-9540</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://whatsapp.com" target="_blank">(0422) 100-9540</a></li>
         </ul>
         <div class="geo" id="geoSt">📡 Activa tu ubicación para adjuntar tu pin GPS al pedido.</div>
         <button class="btn-y" style="margin-top:10px;padding:8px 16px;font-size:.8rem" onclick="getGPS()">📍 Compartir mi ubicación actual</button>
@@ -159,7 +159,7 @@
   <div class="chat" id="chatWin">
     <div class="chat-head">
       <div class="chat-head-l"><div class="logo-box" style="width:36px;height:36px"><img src="Logo.JPG"></div><div><h4>Asistente Inca</h4><p style="font-size:.75rem;color:#d4d2c9">🟢 En línea · Listo para ayudarte</p></div></div>
-      <button class="close-x" onclick="document.getElementById('chatWin').classList.remove('open')">✕</button>
+      <button class="bot-btn" onclick="openChat()" style="padding:0"><img src="Logo.JPG" style="width:100%;height:100%;object-fit:cover;border-radius:50%"><span class="notif" id="nBadge">1</span></button>
     </div>
     <div class="cart-bar" id="cartBar"><span id="cartTxt">🛒 0 platos ($0)</span><button onclick="sendWA()">Enviar Pedido 📲</button></div>
     <div class="chat-body" id="cBody"></div>
@@ -194,8 +194,9 @@
       {id:21,name:"Tallarines a la huancaína",cat:"Pastas",price:10,fav:true,desc:"Pasta con salsa de ají amarillo y queso acompañada con lomo saltado.",img:"Tallarín-huancaina.jpeg.JPG"},
       {id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:true,desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
     ];
-    let cart=[],gps="",started=false;
-    const cardHTML=(i,f)=>`<div class="card">${f?'<span class="fav-tag">⭐ Favorito</span>':''}<span class="cat-tag">${i.cat}</span><img src="${i.img}" onerror="this.src='https://unsplash.com'"><div class="card-body"><h3>${i.name}</h3><p>${i.desc}</p><div class="card-foot"><span class="price">$${i.price}</span><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div></div></div>`;
+        let cart=[],gps="",started=false;
+    const fallbackImg="https://unsplash.com";
+    const cardHTML=(i,f)=>`<div class="card">${f?'<span class="fav-tag">⭐ Favorito</span>':''}<span class="cat-tag">${i.cat}</span><img src="${i.img}" onerror="this.src='${fallbackImg}'"><div class="card-body"><h3>${i.name}</h3><p>${i.desc}</p><div class="card-foot"><span class="price">$${i.price}</span><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div></div></div>`;
     function render(c="todos"){
       document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>cardHTML(i,true)).join("");
       document.getElementById("fullGrid").innerHTML=(c==="todos"?menu:menu.filter(i=>i.cat===c)).map(i=>cardHTML(i,false)).join("");
@@ -209,41 +210,53 @@
     }
     function openChat(){
       document.getElementById("chatWin").classList.add("open");document.getElementById("nBadge").style.display="none";
-      if(!started){bot("¡Hola! 👋 Soy el <strong>Asistente Inca</strong>. Te ayudo con el menú, precios, pago móvil o a <strong>armar tu pedido</strong>.<br>¿Qué se te antoja hoy?");chips(["🍽️ Ver menú","⭐ Recomiéndame algo","💳 Pago Móvil"]);started=true}
+      if(!started){bot("¡Hola! 👋 Soy el <strong>Asistente Inca</strong>. Te ayudo con el menú, precios, pago móvil o a <strong>armar tu pedido</strong>.<br>¿Qué se te antoja hoy?");chips(["Ver menú","Recomiéndame algo","Pago Móvil"]);started=true}
     }
     function bot(h){const d=document.createElement("div");d.className="m-bot";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
     function usr(t){const d=document.createElement("div");d.className="m-usr";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
     function chips(a){document.getElementById("cChips").innerHTML=a.map(x=>`<button class="chip" onclick="pick('${x}')">${x}</button>`).join("")}
     function pick(o){
-      const t=o.replace(/^[^\w\sÁÉÍÓÚáéíóúÑñ]+\s*/,"");usr(t);
+      usr(o);
+      const low=o.toLowerCase();
+      if(low.includes("finalizar")||low.includes("whatsapp")||low.includes("enviar pedido")){
+        bot("📲 Abriendo WhatsApp con tu pedido...");
+        setTimeout(sendWA,300);
+        return;
+      }
       setTimeout(()=>{
-        if(o.includes("Ver menú")){bot("🍽️ Elige una categoría:");chips(["🥟 Entradas","🐟 Del Mar","🍗 Pollos a la leña","🥘 Criollos","🍝 Pastas"])}
-        else if(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"].some(c=>o.includes(c))){
-          const list=menu.filter(i=>i.cat.toLowerCase()===t.toLowerCase());
-          bot(`<strong>${o}:</strong>`+list.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
-          chips(["🍽️ Ver menú","📲 Finalizar pedido"]);
-        }else if(o.includes("Recomiéndame")){
+        if(low.includes("ver menú")||low.includes("seguir viendo")){
+          bot("🍽️ Elige una categoría:");
+          chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"]);
+        }else if(["entradas","del mar","pollos a la leña","criollos","pastas"].includes(low)){
+          const list=menu.filter(i=>i.cat.toLowerCase()===low);
+          bot(`<strong>${o}:</strong>`+list.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}" onerror="this.src='${fallbackImg}'"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
+          chips(["Ver menú","Finalizar pedido"]);
+        }else if(low.includes("recomiéndame")){
           const f=[menu,menu,menu];
-          bot("⭐ Favoritos de hoy:"+f.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
-          chips(["🍽️ Ver menú","💳 Pago Móvil"]);
-        }else if(o.includes("Pago Móvil")){
+          bot("⭐ Favoritos de hoy:"+f.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}" onerror="this.src='${fallbackImg}'"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
+          chips(["Ver menú","Pago Móvil"]);
+        }else if(low.includes("pago móvil")){
           bot("💳 <strong>Pago Móvil:</strong><br>• CI: 25.433.809<br>• Tlf: 0422-1009540<br>• Banco: 0102 (Venezuela)<br>🕒 Hasta las 7:00 PM");
-          chips(["🍽️ Ver menú","📍 Compartir GPS"]);
-        }else if(o.includes("GPS")){getGPS();bot("📡 Solicitando ubicación GPS...")}
-        else if(o.includes("Finalizar")||o.includes("WhatsApp"))sendWA();
-      },250);
+          chips(["Ver menú","Compartir GPS"]);
+        }else if(low.includes("gps")){
+          getGPS();
+          bot("📡 Solicitando ubicación GPS...");
+        }
+      },200);
     }
     function sendUsr(){
       const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";const l=v.toLowerCase();
       setTimeout(()=>{
-        if(l.includes("menu")||l.includes("menú")||l.includes("carta"))pick("🍽️ Ver menú");
-        else if(l.includes("ceviche")||l.includes("mar"))pick("🐟 Del Mar");
-        else if(l.includes("pollo")||l.includes("leña"))pick("🍗 Pollos a la leña");
-        else if(l.includes("chaufa")||l.includes("lomo"))pick("🥘 Criollos");
-        else if(l.includes("tallarin")||l.includes("pasta"))pick("🍝 Pastas");
-        else if(l.includes("pago")||l.includes("banco"))pick("💳 Pago Móvil");
-        else{bot("¡Anotado! Envía tu pedido por WhatsApp al <strong>(0422) 100-9540</strong> o mira el menú:");chips(["🍽️ Ver menú","📲 Enviar por WhatsApp"])}
-      },250);
+        if(l.includes("menu")||l.includes("menú")||l.includes("carta"))pick("Ver menú");
+        else if(l.includes("entrada")||l.includes("tequeño")||l.includes("causa"))pick("Entradas");
+        else if(l.includes("ceviche")||l.includes("mar")||l.includes("tigre"))pick("Del Mar");
+        else if(l.includes("pollo")||l.includes("leña")||l.includes("mostro"))pick("Pollos a la leña");
+        else if(l.includes("chaufa")||l.includes("lomo")||l.includes("criollo"))pick("Criollos");
+        else if(l.includes("tallarin")||l.includes("pasta"))pick("Pastas");
+        else if(l.includes("pago")||l.includes("banco"))pick("Pago Móvil");
+        else if(l.includes("pedir")||l.includes("finalizar")||l.includes("whatsapp"))sendWA();
+        else{bot("¡Anotado! Envía tu pedido por WhatsApp al <strong>(0422) 100-9540</strong> o mira el menú:");chips(["Ver menú","Enviar por WhatsApp"])}
+      },200);
     }
     function addCart(id){
       const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
@@ -251,14 +264,14 @@
       document.getElementById("cartBar").style.display="flex";
       document.getElementById("cartTxt").textContent=`🛒 ${cart.length} plato(s) ($${tot})`;
       if(!document.getElementById("chatWin").classList.contains("open"))openChat();
-      setTimeout(()=>{bot(`✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.`);chips(["🍽️ Seguir viendo menú","📲 Finalizar pedido"])},200);
+      setTimeout(()=>{bot(`✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.`);chips(["Seguir viendo menú","Finalizar pedido"])},150);
     }
     function sendWA(){
-      let m="Hola *Tu Punto Inca*, mi pedido es:%0A%0A";
-      if(cart.length){cart.forEach((x,i)=>m+=`${i+1}. ${x.name} - $${x.price}%0A`);m+=`%0A*Total:* $${cart.reduce((s,x)=>s+x.price,0)}`}
-      else m+="Quisiera información del menú.";
-      if(gps)m+=`%0A%0A📍 *Mi ubicación:* ${encodeURIComponent(gps)}`;
-      window.open(`https://wa.me{m}`,"_blank");
+      let m="Hola *Tu Punto Inca*, mi pedido es:\n\n";
+      if(cart.length){cart.forEach((x,i)=>m+=`${i+1}. ${x.name} - $${x.price}\n`);m+=`\n*Total:* $${cart.reduce((s,x)=>s+x.price,0)}`}
+      else m+="Quisiera hacer una consulta sobre el menú.";
+      if(gps)m+=`\n\n📍 *Mi ubicación:* ${gps}`;
+      window.location.href=`https://whatsapp.com{encodeURIComponent(m)}`;
     }
     render();
   </script>
