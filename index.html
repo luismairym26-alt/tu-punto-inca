@@ -1,1331 +1,272 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tu Punto Inca | El auténtico sabor del Perú</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://googleapis.com" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #14130f;
-      --bg-card: #1d1b15;
-      --yellow: #f5d011;
-      --yellow-hover: #e0bd0b;
-      --cream-chat: #fbf8e8;
-      --navy-user: #14223d;
-      --text-white: #ffffff;
-      --text-gray: #d4d2c9;
-      --green-online: #25d366;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-white);
-      background-image: radial-gradient(#2c2817 1.5px, transparent 1.5px), radial-gradient(#2c2817 1.5px, #14130f 1.5px);
-      background-size: 40px 40px;
-      background-position: 0 0, 20px 20px;
-      overflow-x: hidden;
-    }
-
-    /* BARRA SUPERIOR */
-    .top-bar {
-      background-color: var(--yellow);
-      color: #111;
-      text-align: center;
-      padding: 10px 15px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .top-bar a {
-      color: #111;
-      font-weight: 700;
-      text-decoration: underline;
-      display: inline-block;
-      margin-top: 2px;
-    }
-
-    /* NAVBAR */
-    header {
-      background-color: rgba(20, 19, 15, 0.95);
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(245, 208, 17, 0.15);
-      position: sticky;
-      top: 52px;
-      z-index: 99;
-      backdrop-filter: blur(8px);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--text-white);
-    }
-
-    .logo-circle {
-      width: 44px;
-      height: 44px;
-      background-color: var(--yellow);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #111;
-      font-weight: 800;
-      font-size: 0.52rem;
-      text-align: center;
-      line-height: 1.1;
-      border: 2px solid #fff;
-      flex-shrink: 0;
-    }
-
-    .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-white);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--yellow);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-white);
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 50px 22px 60px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(245, 208, 17, 0.1);
-      border: 1px solid rgba(245, 208, 17, 0.45);
-      color: var(--yellow);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 24px;
-    }
-
-    .status-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background-color: var(--yellow);
-      box-shadow: 0 0 8px var(--yellow);
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      line-height: 1.12;
-      margin-bottom: 22px;
-      max-width: 720px;
-    }
-
-    .hero h1 span {
-      color: var(--yellow);
-      position: relative;
-      display: inline-block;
-    }
-
-    .hero h1 span::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 100%;
-      height: 6px;
-      background-color: var(--yellow);
-      border-radius: 50%;
-      transform: rotate(-1.5deg);
-    }
-
-    .hero p {
-      color: var(--text-gray);
-      font-size: 1.05rem;
-      line-height: 1.65;
-      max-width: 600px;
-      margin-bottom: 32px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-primary {
-      background-color: var(--yellow);
-      color: #111;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border: 2px solid var(--yellow);
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--yellow-hover);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background-color: rgba(255, 255, 255, 0.05);
-      color: var(--text-white);
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border: 1.5px solid rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--yellow);
-      color: var(--yellow);
-    }
-
-    /* SECCIONES GENERALES */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 45px 22px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 8px;
-      color: var(--text-white);
-    }
-
-    .section-title span {
-      color: var(--yellow);
-    }
-
-    .section-subtitle {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-      margin-bottom: 28px;
-    }
-
-    /* PLATOS FAVORITOS Y CARTA */
-    .filter-tabs {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      margin-bottom: 24px;
-    }
-
-    .tab-btn {
-      background: var(--bg-card);
-      color: var(--text-gray);
-      border: 1px solid rgba(245, 208, 17, 0.25);
-      padding: 9px 18px;
-      border-radius: 50px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--yellow);
-      color: #111;
-      border-color: var(--yellow);
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-      gap: 20px;
-    }
-
-    .dish-card {
-      background-color: var(--bg-card);
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s, border-color 0.25s;
-      position: relative;
-    }
-
-    .dish-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 208, 17, 0.45);
-    }
-
-    .fav-tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--yellow);
-      color: #111;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-      z-index: 2;
-    }
-
-    .cat-tag {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(20, 19, 15, 0.85);
-      color: var(--yellow);
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 1px solid rgba(245, 208, 17, 0.3);
-      z-index: 2;
-    }
-
-    .dish-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background-color: #25221a;
-    }
-
-    .dish-info {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      justify-content: space-between;
-    }
-
-    .dish-info h3 {
-      font-size: 1.12rem;
-      margin-bottom: 6px;
-    }
-
-    .dish-info p {
-      font-size: 0.84rem;
-      color: var(--text-gray);
-      margin-bottom: 16px;
-      line-height: 1.45;
-    }
-
-    .dish-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-    }
-
-    .dish-price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--yellow);
-    }
-
-    .add-btn {
-      background: var(--yellow);
-      color: #111;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .add-btn:hover {
-      background: var(--yellow-hover);
-    }
-
-    /* UBICACIÓN EN TIEMPO REAL Y DELIVERY */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .info-box {
-      background: var(--bg-card);
-      border: 1px solid rgba(245, 208, 17, 0.2);
-      border-radius: 18px;
-      padding: 24px;
-    }
-
-    .info-box h3 {
-      color: var(--yellow);
-      margin-bottom: 12px;
-      font-size: 1.2rem;
-    }
-
-    .info-list {
-      list-style: none;
-      color: var(--text-gray);
-      font-size: 0.92rem;
-      line-height: 1.8;
-    }
-
-    .info-list a {
-      color: var(--yellow);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .pago-movil-card {
-      background: rgba(245, 208, 17, 0.08);
-      border: 1px dashed var(--yellow);
-      padding: 14px;
-      border-radius: 12px;
-      margin-top: 12px;
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    .map-container {
-      margin-top: 15px;
-      border-radius: 14px;
-      overflow: hidden;
-      height: 220px;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .geo-status {
-      margin-top: 12px;
-      font-size: 0.82rem;
-      color: #a3e635;
-
-background: rgba(163, 230, 53, 0.1);
-padding: 8px 12px;
-border-radius: 8px;
-}
-/* BOTONES FLOTANTES */
-.floating-stack {
-position: fixed;
-bottom: 22px;
-right: 18px;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 14px;
-z-index: 998;
-}
-.bot-launcher {
-position: relative;
-width: 58px;
-height: 58px;
-border-radius: 50%;
-background: var(--yellow);
-border: 3px solid #fff;
-box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: 800;
-font-size: 0.56rem;
-color: #111;
-text-align: center;
-line-height: 1.1;
-transition: transform 0.2s;
-}
-.bot-launcher:hover {
-transform: scale(1.07);
-}
-.notif-badge {
-position: absolute;
-top: -5px;
-right: -4px;
-background: #e11d48;
-color: #fff;
-width: 22px;
-height: 22px;
-border-radius: 50%;
-font-size: 0.75rem;
-font-weight: 700;
-display: flex;
-align-items: center;
-justify-content: center;
-border: 2px solid #fff;
-}
-.chat-mini-icon {
-position: absolute;
-bottom: -4px;
-right: -4px;
-background: #14223d;
-color: #fff;
-width: 22px;
-height: 22px;
-border-radius: 50%;
-font-size: 0.7rem;
-display: flex;
-align-items: center;
-justify-content: center;
-border: 2px solid #fff;
-}
-.wa-launcher {
-width: 58px;
-height: 58px;
-border-radius: 50%;
-background: var(--green-online);
-color: #fff;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-text-decoration: none;
-font-size: 1.8rem;
-transition: transform 0.2s;
-}
-.wa-launcher:hover {
-transform: scale(1.07);
-}
-/* =========================================
-ASISTENTE VIRTUAL (ESTILO EXACTO CAPTURA)
-========================================= */
-.chat-window {
-position: fixed;
-bottom: 18px;
-right: 18px;
-width: 375px;
-max-width: calc(100vw - 24px);
-height: 610px;
-max-height: calc(100vh - 36px);
-background-color: var(--cream-chat);
-border-radius: 22px;
-box-shadow: 0 15px 40px rgba(0,0,0,0.65);
-display: none;
-flex-direction: column;
-overflow: hidden;
-z-index: 1000;
-border: 1px solid rgba(0,0,0,0.15);
-}
-.chat-window.open {
-display: flex;
-animation: slideUp 0.25s ease;
-}
-@keyframes slideUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-.chat-header {
-background-color: #14130f;
-color: #fff;
-padding: 14px 16px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-border-bottom: 3px solid var(--yellow);
-}
-.chat-header-info {
-display: flex;
-align-items: center;
-gap: 11px;
-}
-.chat-header-title h4 {
-font-size: 1.02rem;
-font-weight: 700;
-}
-.chat-header-title p {
-font-size: 0.76rem;
-color: #d4d2c9;
-display: flex;
-align-items: center;
-gap: 6px;
-}
-.online-dot {
-width: 8px;
-height: 8px;
-border-radius: 50%;
-background-color: var(--green-online);
-display: inline-block;
-}
-.close-chat {
-background: rgba(255,255,255,0.12);
-border: none;
-color: #fff;
-width: 32px;
-height: 32px;
-border-radius: 50%;
-font-size: 1.1rem;
-cursor: pointer;
-}
-.chat-body {
-flex: 1;
-padding: 15px;
-overflow-y: auto;
-display: flex;
-flex-direction: column;
-gap: 12px;
-}
-.msg-bot {
-background: #ffffff;
-color: #1a1a1a;
-padding: 13px 15px;
-border-radius: 16px 16px 16px 4px;
-font-size: 0.88rem;
-line-height: 1.48;
-box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-max-width: 92%;
-align-self: flex-start;
-}
-.msg-bot a {
-color: #14223d;
-font-weight: 700;
-text-decoration: underline;
-}
-.msg-user {
-background: var(--navy-user);
-color: #ffffff;
-padding: 10px 16px;
-border-radius: 16px 16px 4px 16px;
-font-size: 0.88rem;
-font-weight: 500;
-max-width: 80%;
-align-self: flex-end;
-box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-}
-/* TARJETA DE PLATO DENTRO DEL CHAT */
-.chat-dish-card {
-background: #f5f2e6;
-border-radius: 12px;
-padding: 9px;
-margin-top: 9px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 8px;
-border: 1px solid rgba(0,0,0,0.06);
-}
-.chat-dish-left {
-display: flex;
-align-items: center;
-gap: 9px;
-}
-.chat-dish-left img {
-width: 48px;
-height: 48px;
-border-radius: 9px;
-object-fit: cover;
-flex-shrink: 0;
-}
-.chat-dish-meta h5 {
-font-size: 0.84rem;
-color: #111;
-margin-bottom: 2px;
-}
-.chat-dish-meta span {
-font-size: 0.86rem;
-font-weight: 700;
-color: #1e40af;
-}
-.chat-add-btn {
-background: var(--yellow);
-color: #111;
-border: none;
-padding: 6px 11px;
-border-radius: 20px;
-font-weight: 700;
-font-size: 0.76rem;
-cursor: pointer;
-white-space: nowrap;
-}
-/* CHIPS DE RESPUESTA RÁPIDA */
-.quick-chips {
-display: flex;
-flex-wrap: wrap;
-gap: 7px;
-padding: 6px 14px 10px;
-background: var(--cream-chat);
-}
-.chip-btn {
-background: #ffffff;
-color: #14223d;
-border: 1.5px solid #14223d;
-padding: 6px 12px;
-border-radius: 50px;
-font-size: 0.78rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.15s;
-}
-.chip-btn:hover {
-background: #14223d;
-color: #fff;
-}
-/* BARRA DE CARRITO EN EL CHAT */
-.cart-banner {
-background: #14223d;
-color: #fff;
-padding: 8px 14px;
-font-size: 0.8rem;
-display: none;
-justify-content: space-between;
-align-items: center;
-}
-.cart-banner button {
-background: var(--yellow);
-color: #111;
-border: none;
-padding: 4px 10px;
-border-radius: 12px;
-font-weight: 700;
-font-size: 0.75rem;
-cursor: pointer;
-}
-/* INPUT DEL CHAT */
-.chat-footer {
-background: #ffffff;
-padding: 10px 12px 8px;
-border-top: 1px solid rgba(0,0,0,0.08);
-}
-.chat-input-row {
-display: flex;
-align-items: center;
-gap: 8px;
-}
-.chat-input-row input {
-flex: 1;
-background: #efece0;
-border: 1px solid rgba(0,0,0,0.1);
-padding: 11px 16px;
-border-radius: 50px;
-font-size: 0.86rem;
-outline: none;
-font-family: inherit;
-}
-.send-btn {
-width: 42px;
-height: 42px;
-border-radius: 50%;
-background: var(--yellow);
-color: #111;
-border: none;
-font-size: 1.1rem;
-font-weight: 700;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.chat-disclaimer {
-text-align: center;
-font-size: 0.72rem;
-color: #555;
-margin-top: 7px;
-line-height: 1.3;
-}
-@media (max-width: 768px) {
-.nav-links {
-display: none;
-position: absolute;
-top: 72px;
-left: 0;
-width: 100%;
-background: #14130f;
-flex-direction: column;
-padding: 20px;
-border-bottom: 2px solid var(--yellow);
-}
-.nav-links.active {
-display: flex;
-}
-.menu-toggle {
-display: block;
-}
-}
-
-
-Pedidos, delivery y consultas por llamada o WhatsApp:
-
-(0422) 100-9540
-
-
-TU PUNTO
-INCA
-Tu Punto Inca
-
-☰
-
-* Favoritos
-* Carta Completa
-* Ubicación y Pagos
-* Asistente Inca
-
-ABIERTO AHORA • HASTA LAS 7 PM
-El auténtico sabor del Perú, aquí en tu punto.
-
-Ceviches frescos de corvina, pollo a la leña de algarrobo, lomo saltado y tallarines con todo el sazón criollo. Ven a disfrutarlo o pídelo a domicilio.
-Ver el menú
-Delivery y pagos
-
-Los Favoritos de la Casa
-
-Nuestros platos estrella preparados al momento.
-
-Nuestra Carta
-
-Filtra por categoría o agrega platos directamente a tu pedido.
-Todos
-🥟 Entradas
-🐟 Del Mar
-🍗 Pollos a la leña
-🥘 Criollos
-🍝 Pastas
-
-Ubicación, Delivery y Pagos
-
-Visítanos en nuestro local o pide con envío rápido hasta tu puerta.
-📍 Dirección y Horario
-
-* Local: Tu Punto Inca (Guaro - Venezolano)
-* Horario: Lunes a Domingo hasta las 7:00 PM
-* Delivery y WhatsApp: (0422) 100-9540
-* Llamadas directas: 0422-1009540
-📡 Activa tu ubicación para adjuntar tu pin GPS al pedido.
-
-
-📍 Compartir mi ubicación actual
-💳 Métodos de Pago y Delivery
-
-* ✅ Pago Móvil:
-Cédula: 25.433.809
-
-Teléfono: 0422-1009540
-
-Banco: 0102 (Banco de Venezuela)
-
-* ✅ Zelle y Efectivo Divisas
-* ✅ Punto de Venta en el local
-💬 Hacer pedido con Asistente Inca
-
-TU PUNTO
-INCA
-1
-💬
-✆
-
-TU PUNTO
-INCA
-
-Asistente Inca
-
-En línea · Restaurante abierto
-✕
-🛒 0 platos ($0)
-Enviar Pedido 📲
-➤
-
-
-Asistente automático · Para atención personal:
-
-(0422) 100-9540
-
-
-// ========================================================
-// MENÚ REAL COMPLETO DE TU PUNTO INCA (CON TUS FOTOS)
-// ========================================================
-const menuItems = [
-// ENTRADAS
-{
-id: 1,
-name: "Papas a la Huancaína",
-category: "Entradas",
-price: 5,
-favorite: false,
-desc: "Rodajas de papa bañadas en nuestra cremosa salsa tradicional de ají amarillo y queso.",
-img: "unsplash.com"
-},
-{
-id: 2,
-name: "Tequeños",
-category: "Entradas",
-price: 6,
-favorite: false,
-desc: "Crujientes tequeños dorados rellenos de queso blanco acompañados de salsa de la casa.",
-img: "unsplash.com"
-},
-{
-id: 3,
-name: "Causa Limeña",
-category: "Entradas",
-price: 7,
-favorite: false,
-desc: "Suave masa de papa amarilla sazonada con limón y ají amarillo, rellena con pollo y aguacate.",
-img: "unsplash.com"
-},
-// DEL MAR
-{
-id: 4,
-name: "Ceviche peruano",
-category: "Del Mar",
-price: 6,
-favorite: true,
-desc: "Trozos de pescado blanco cocinado y marinado con limón criollo, cebolla morada, especies esenciales y acompañado de camote, yuca frita y chifles.",
-img: "Ceviche.jpeg.JPG"
-},
-{
-id: 5,
-name: "Leche de tigre",
-category: "Del Mar",
-price: 7,
-favorite: true,
-desc: "Concentrado de sabores cítricos y altamente nutritivo, con trozos de pescado, chicharrón de pescado y camote.",
-img: "Leche-tigre.jpeg.JPG" 
-},
-{
-id: 6,
-name: "Ceviche para compartir",
-category: "Del Mar",
-price: 10,
-favorite: false,
-desc: "350grm de pescado (corvina) fresco y previamente preparado con yuca frita, tostones, batata (camote) y coronado de cebolla morada.",
-img: "ceviche.jpg"
-},
-{
-id: 7,
-name: "Dúo Marino",
-category: "Del Mar",
-price: 8,
-favorite: false,
-desc: "Porción de ceviche, camote, chifles, yuca frita más porción arroz con mariscos textura cremosa o textura suelta.",
-img: "Duo-marino.jpg"
-},
-{
-id: 8,
-name: "Trío Marino",
-category: "Del Mar",
-price: 12,
-favorite: true,
-desc: "Porción de ceviche, camote, yuca frita, chifles, más porción de arroz con mariscos textura cremosa o textura suelta y rico chicharrón de pescado.",
-img: "Trio-marino.jpeg.JPG"
-},
-// POLLOS A LA LEÑA
-{
-id: 9,
-name: "Pollo a la leña",
-category: "Pollos a la leña",
-price: 20,
-favorite: false,
-desc: "1 pollo jugoso y asado con leña de algarrobo, acompañado con papas fritas y ensalada.",
-img: "unsplash.com"
-},
-{
-id: 10,
-name: "1/2 Pollo a la leña",
-category: "Pollos a la leña",
-price: 10.5,
-favorite: false,
-desc: "Medio pollo jugoso y asado con leña de algarrobo, acompañado con papas fritas y ensalada.",
-img: "unsplash.com"
-},
-{
-id: 11,
-name: "1/4 Pollo a la leña",
-category: "Pollos a la leña",
-price: 5,
-favorite: false,
-desc: "Cuarto de pollo jugoso y asado con leña de algarrobo, acompañado con papas fritas y ensalada.",
-img: "unsplash.com"
-},
-{
-id: 12,
-name: "Mostro",
-category: "Pollos a la leña",
-price: 7,
-favorite: true,
-desc: "Pollo jugoso y asado con leña de algarrobo, acompañado con papas fritas, arroz chaufa y ensalada.",
-img: "mostrito.jpg"
-},
-// CRIOLLOS
-{
-id: 13,
-name: "Ají de gallina",
-category: "Criollos",
-price: 8,
-favorite: false,
-desc: "Pollo deshilachado en cremosa salsa de ají amarillo, acompañado de arroz, papa y aceituna.",
-img: "unsplash.com"
-},
-{
-id: 14,
-name: "Arroz chaufa",
-category: "Criollos",
-price: 3.5,
-favorite: true,
-desc: "Arroz frito salteado con trozos de pollo, huevo frito, especies de la casa y coronado de cebolla china.",
-img: "Chaufa.jpeg.JPG"
-},
-{
-id: 15,
-name: "Pollo saltado",
-category: "Criollos",
-price: 6,
-favorite: false,
-desc: "180grm de pechuga de pollo salteado y flameado con jugosos trozos de tomate y cebolla e ingredientes peruanos más arroz y papas fritas.",
-img: "unsplash.com"
-},
-{
-id: 16,
-name: "Lomo saltado",
-category: "Criollos",
-price: 7,
-favorite: false,
-desc: "180grm de lomo de res salteado y flameado con jugosos trozos de tomate y cebolla e ingredientes peruanos más arroz y papas fritas.",
-img: "unsplash.com"
-},
-{
-id: 17,
-name: "Mostrito",
-category: "Criollos",
-price: 5,
-favorite: false,
-desc: "Arroz chaufa, 1/8 pollo broaster, ensalada fresca y papas fritas naturales.",
-img: "Mostrito.jpeg.JPG"
-},
-{
-id: 18,
-name: "Alitas BBQ",
-category: "Criollos",
-price: 5,
-favorite: false,
-desc: "4 alitas en salsa bbq con arroz chaufa, papas fritas y ensalada.",
-img: "unsplash.com"
-},
-{
-id: 19,
-name: "Anticuchos",
-category: "Criollos",
-price: 6,
-favorite: false,
-desc: "3 palos de anticuchos acompañados con papas a la huancaína, ensalada y cremas.",
-img: "unsplash.com"
-},
-// PASTAS
-{
-id: 20,
-name: "Tallarines saltado de carne o pollo",
-category: "Pastas",
-price: 7,
-favorite: true,
-desc: "Tallarines (spaghetti) salteados a fuego alto en un wok con 180 gr de carne (res o pollo), cebolla, tomate y sillao.",
-img: "Tallarín-saltado.jpeg.JPG"
-},
-{
-id: 21,
-name: "Tallarines a la huancaína",
-category: "Pastas",
-price: 10,
-favorite: true,
-desc: "Pasta con salsa de ají amarillo y queso, acompañada con lomo saltado o la proteína de preferencia.",
-img: "Tallarín-huancaina.jpeg.JPG"
-},
-{
-id: 22,
-name: "Tallarines verde",
-category: "Pastas",
-price: 10,
-favorite: true,
-desc: "Pasta en salsa verde casera, acompañados de papas a la huancaína y proteína a elección (bisteck, chuleta o 2 palos de anticucho).",
-img: "Tallarín-verdes.jpeg.JPG"
-}
+    :root{--bg-dark:#14130f;--bg-card:#1d1b15;--yellow:#f5d011;--cream:#fbf8e8;--navy:#14223d;--white:#fff;--gray:#d4d2c9;--green:#25d366}
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;background:var(--bg-dark);color:var(--white);background-image:radial-gradient(#2c2817 1.5px,transparent 1.5px),radial-gradient(#2c2817 1.5px,#14130f 1.5px);background-size:40px 40px;background-position:0 0,20px 20px}
+    .top-bar{background:var(--yellow);color:#111;text-align:center;padding:10px 15px;font-size:.85rem;font-weight:500;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#111;font-weight:700;text-decoration:underline}
+    header{background:rgba(20,19,15,.95);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(245,208,17,.15);position:sticky;top:50px;z-index:99}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+    .logo{width:44px;height:44px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:.52rem;text-align:center;line-height:1.1;border:2px solid #fff;flex-shrink:0}
+    .brand-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700}
+    .nav-links{display:flex;gap:20px;list-style:none}
+    .nav-links a{color:var(--white);text-decoration:none;font-size:.9rem}
+    .menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.8rem;cursor:pointer}
+    .hero{max-width:1100px;margin:0 auto;padding:45px 22px 55px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,208,17,.1);border:1px solid rgba(245,208,17,.45);color:var(--yellow);padding:6px 16px;border-radius:50px;font-size:.78rem;font-weight:600;margin-bottom:22px}
+    .dot{width:9px;height:9px;border-radius:50%;background:var(--yellow)}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,6vw,3.8rem);line-height:1.12;margin-bottom:20px;max-width:720px}
+    .hero h1 span{color:var(--yellow);border-bottom:4px solid var(--yellow)}
+    .hero p{color:var(--gray);font-size:1.02rem;line-height:1.6;max-width:600px;margin-bottom:28px}
+    .btns{display:flex;flex-wrap:wrap;gap:12px}
+    .btn-y{background:var(--yellow);color:#111;padding:13px 26px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.92rem;border:none;cursor:pointer}
+    .btn-o{background:rgba(255,255,255,.05);color:var(--white);padding:13px 26px;border-radius:50px;font-weight:600;text-decoration:none;font-size:.92rem;border:1.5px solid rgba(255,255,255,.6);cursor:pointer}
+    .sec{max-width:1100px;margin:0 auto;padding:40px 22px}
+    .sec-title{font-family:'Playfair Display',serif;font-size:1.95rem;margin-bottom:6px}
+    .sec-title span{color:var(--yellow)}
+    .sec-sub{color:var(--gray);font-size:.92rem;margin-bottom:24px}
+    .tabs{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;margin-bottom:22px}
+    .tab{background:var(--bg-card);color:var(--gray);border:1px solid rgba(245,208,17,.25);padding:8px 16px;border-radius:50px;font-size:.86rem;font-weight:600;cursor:pointer;white-space:nowrap}
+    .tab.active{background:var(--yellow);color:#111}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+    .card{background:var(--bg-card);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;position:relative}
+    .fav-tag{position:absolute;top:12px;left:12px;background:var(--yellow);color:#111;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px}
+    .cat-tag{position:absolute;top:12px;right:12px;background:rgba(20,19,15,.85);color:var(--yellow);font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:20px}
+    .card img{width:100%;height:200px;object-fit:cover;background:#25221a}
+    .card-body{padding:16px;display:flex;flex-direction:column;flex-grow:1}
+    .card-body h3{font-size:1.1rem;margin-bottom:6px}
+    .card-body p{font-size:.84rem;color:var(--gray);margin-bottom:14px;line-height:1.45}
+    .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+    .price{font-size:1.22rem;font-weight:700;color:var(--yellow)}
+    .add-btn{background:var(--yellow);color:#111;border:none;padding:8px 15px;border-radius:50px;font-weight:700;font-size:.84rem;cursor:pointer}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+    .box{background:var(--bg-card);border:1px solid rgba(245,208,17,.2);border-radius:18px;padding:22px}
+    .box h3{color:var(--yellow);margin-bottom:10px}
+    .box ul{list-style:none;color:var(--gray);font-size:.9rem;line-height:1.8}
+    .box a{color:var(--yellow);font-weight:600}
+    .pm-box{background:rgba(245,208,17,.08);border:1px dashed var(--yellow);padding:12px;border-radius:12px;margin-top:10px;font-size:.86rem;line-height:1.6}
+    .geo{margin-top:10px;font-size:.8rem;color:#a3e635;background:rgba(163,230,53,.1);padding:8px 12px;border-radius:8px}
+    .map{margin-top:14px;border-radius:14px;overflow:hidden;height:210px}
+    .float-stack{position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column;gap:12px;z-index:998}
+    .bot-btn{position:relative;width:58px;height:58px;border-radius:50%;background:var(--yellow);border:3px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,.5);cursor:pointer;font-weight:800;font-size:.55rem;color:#111;line-height:1.1}
+    .notif{position:absolute;top:-5px;right:-4px;background:#e11d48;color:#fff;width:22px;height:22px;border-radius:50%;font-size:.75rem;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+    .wa-btn{width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.5);text-decoration:none;font-size:1.7rem}
+    .chat{position:fixed;bottom:16px;right:16px;width:370px;max-width:calc(100vw - 24px);height:600px;max-height:calc(100vh - 32px);background:var(--cream);border-radius:22px;box-shadow:0 15px 40px rgba(0,0,0,.65);display:none;flex-direction:column;overflow:hidden;z-index:1000}
+    .chat.open{display:flex}
+    .chat-head{background:#14130f;color:#fff;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--yellow)}
+    .chat-head-l{display:flex;align-items:center;gap:10px}
+    .close-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer}
+    .chat-body{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+    .m-bot{background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+    .m-usr{background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end}
+    .c-card{background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .c-card-l{display:flex;align-items:center;gap:8px}
+    .c-card img{width:46px;height:46px;border-radius:8px;object-fit:cover}
+    .c-card h5{font-size:.82rem;color:#111}
+    .c-card span{font-size:.84rem;font-weight:700;color:#1e40af}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;padding:6px 12px 10px;background:var(--cream)}
+    .chip{background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5px 11px;border-radius:50px;font-size:.76rem;font-weight:600;cursor:pointer}
+    .cart-bar{background:var(--navy);color:#fff;padding:8px 14px;font-size:.8rem;display:none;justify-content:space-between;align-items:center}
+    .cart-bar button{background:var(--yellow);color:#111;border:none;padding:4px 10px;border-radius:12px;font-weight:700;font-size:.75rem;cursor:pointer}
+    .chat-foot{background:#fff;padding:10px;border-top:1px solid rgba(0,0,0,.08)}
+    .in-row{display:flex;gap:8px}
+    .in-row input{flex:1;background:#efece0;border:none;padding:10px 15px;border-radius:50px;font-size:.85rem;outline:none}
+    .send{width:40px;height:40px;border-radius:50%;background:var(--yellow);border:none;font-weight:700;cursor:pointer}
+    .disc{text-align:center;font-size:.7rem;color:#555;margin-top:6px}
+    @media(max-width:768px){.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:#14130f;flex-direction:column;padding:20px}.nav-links.active{display:flex}.menu-toggle{display:block}}
+  </style>
+</head>
+<body>
+  <div class="top-bar">Pedidos, delivery y consultas por llamada o WhatsApp:<br><a href="https://wa.me" target="_blank">(0422) 100-9540</a></div>
+  <header>
+    <a href="#" class="brand"><div class="logo">TU PUNTO<br>INCA</div><span class="brand-name">Tu Punto Inca</span></a>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#favoritos">Favoritos</a></li>
+      <li><a href="#carta">Carta Completa</a></li>
+      <li><a href="#ubicacion">Ubicación y Pagos</a></li>
+      <li><a href="javascript:void(0)" onclick="openChat()">Asistente Inca</a></li>
+    </ul>
+  </header>
+
+  <section class="hero">
+    <div class="badge"><span class="dot" id="hDot"></span><span id="hTxt">ABIERTO AHORA • HASTA LAS 7 PM</span></div>
+    <h1>El auténtico sabor del <span>Perú</span>, aquí en tu punto.</h1>
+    <p>Ceviches frescos de corvina, pollo a la leña de algarrobo, lomo saltado y tallarines con todo el sazón criollo. Ven a disfrutarlo o pídelo a domicilio.</p>
+    <div class="btns"><a href="#carta" class="btn-y">Ver el menú</a><a href="#ubicacion" class="btn-o">Delivery y pagos</a></div>
+  </section>
+
+  <section class="sec" id="favoritos">
+    <h2 class="sec-title">Los <span>Favoritos</span> de la Casa</h2>
+    <p class="sec-sub">Nuestros platos estrella preparados al momento.</p>
+    <div class="grid" id="favGrid"></div>
+  </section>
+
+  <section class="sec" id="carta">
+    <h2 class="sec-title">Nuestra <span>Carta</span></h2>
+    <p class="sec-sub">Filtra por categoría o agrega platos directamente a tu pedido.</p>
+    <div class="tabs">
+      <button class="tab active" onclick="filterMenu('todos',this)">Todos</button>
+      <button class="tab" onclick="filterMenu('Entradas',this)">🥟 Entradas</button>
+      <button class="tab" onclick="filterMenu('Del Mar',this)">🐟 Del Mar</button>
+      <button class="tab" onclick="filterMenu('Pollos a la leña',this)">🍗 Pollos a la leña</button>
+      <button class="tab" onclick="filterMenu('Criollos',this)">🥘 Criollos</button>
+      <button class="tab" onclick="filterMenu('Pastas',this)">🍝 Pastas</button>
+    </div>
+    <div class="grid" id="fullGrid"></div>
+  </section>
+
+  <section class="sec" id="ubicacion">
+    <h2 class="sec-title">Ubicación, <span>Delivery</span> y Pagos</h2>
+    <p class="sec-sub">Visítanos en nuestro local o pide con envío rápido hasta tu puerta.</p>
+    <div class="info-grid">
+      <div class="box">
+        <h3>📍 Dirección y Horario</h3>
+        <ul>
+          <li><strong>Local:</strong> Tu Punto Inca (Cabudare / Barquisimeto)</li>
+          <li><strong>Horario:</strong> Lunes a Domingo hasta las 7:00 PM</li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me" target="_blank">(0422) 100-9540</a></li>
+        </ul>
+        <div class="geo" id="geoSt">📡 Activa tu ubicación para adjuntar tu pin GPS al pedido.</div>
+        <button class="btn-y" style="margin-top:10px;padding:8px 16px;font-size:.8rem" onclick="getGPS()">📍 Compartir mi ubicación actual</button>
+        <div class="map"><iframe id="mapFr" width="100%" height="100%" style="border:0" loading="lazy" src="https://google.com"></iframe></div>
+      </div>
+      <div class="box">
+        <h3>💳 Métodos de Pago y Delivery</h3>
+        <ul><li>✅ <strong>Pago Móvil:</strong></li></ul>
+        <div class="pm-box"><strong>Cédula:</strong> 25.433.809<br><strong>Teléfono:</strong> 0422-1009540<br><strong>Banco:</strong> 0102 (Banco de Venezuela)</div>
+        <ul style="margin-top:10px"><li>✅ <strong>Zelle y Efectivo Divisas</strong></li><li>✅ <strong>Punto de Venta</strong> en el local</li></ul>
+        <br><button class="btn-y" onclick="openChat()">💬 Hacer pedido con Asistente Inca</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="float-stack">
+    <button class="bot-btn" onclick="openChat()">TU PUNTO<br>INCA<span class="notif" id="nBadge">1</span></button>
+    <a href="https://wa.me?text=Hola%20Tu%20Punto%20Inca" target="_blank" class="wa-btn">✆</a>
+  </div>
+
+  <div class="chat" id="chatWin">
+    <div class="chat-head">
+      <div class="chat-head-l"><div class="logo" style="width:36px;height:36px;font-size:.45rem">TU PUNTO<br>INCA</div><div><h4>Asistente Inca</h4><p style="font-size:.75rem;color:#d4d2c9">🟢 En línea · Listo para ayudarte</p></div></div>
+      <button class="close-x" onclick="document.getElementById('chatWin').classList.remove('open')">✕</button>
+    </div>
+    <div class="cart-bar" id="cartBar"><span id="cartTxt">🛒 0 platos ($0)</span><button onclick="sendWA()">Enviar Pedido 📲</button></div>
+    <div class="chat-body" id="cBody"></div>
+    <div class="chips" id="cChips"></div>
+    <div class="chat-foot">
+      <div class="in-row"><input type="text" id="cIn" placeholder="Escribe tu pregunta o pedido..." onkeypress="if(event.key==='Enter')sendUsr()"><button class="send" onclick="sendUsr()">➤</button></div>
+      <div class="disc">Asistente automático · Atención personal: <strong>(0422) 100-9540</strong></div>
+    </div>
+  </div>
+
+  <script>
+    const menu=[
+      {id:1,name:"Papas a la Huancaína",cat:"Entradas",price:5,fav:false,desc:"Rodajas de papa bañadas en cremosa salsa tradicional de ají amarillo y queso.",img:"https://unsplash.com"},
+      {id:2,name:"Tequeños",cat:"Entradas",price:6,fav:false,desc:"Crujientes tequeños dorados rellenos de queso blanco con salsa de la casa.",img:"https://unsplash.com"},
+      {id:3,name:"Causa Limeña",cat:"Entradas",price:7,fav:false,desc:"Masa de papa amarilla sazonada con limón y ají amarillo rellena con pollo y aguacate.",img:"https://unsplash.com"},
+      {id:4,name:"Ceviche peruano",cat:"Del Mar",price:6,fav:true,desc:"Pescado blanco marinado con limón criollo, cebolla morada, camote, yuca frita y chifles.",img:"Ceviche.jpeg.JPG"},
+      {id:5,name:"Leche de tigre",cat:"Del Mar",price:7,fav:true,desc:"Concentrado cítrico con trozos de pescado, chicharrón de pescado y camote.",img:"Leche-tigre.jpeg.JPG"},
+      {id:6,name:"Ceviche para compartir",cat:"Del Mar",price:10,fav:false,desc:"350grm de corvina fresca con yuca frita, tostones, camote y cebolla morada.",img:"Ceviche.jpeg.JPG"},
+      {id:7,name:"Dúo Marino",cat:"Del Mar",price:8,fav:false,desc:"Porción de ceviche, camote, chifles, yuca frita más arroz con mariscos.",img:"Trío-marino.jpeg.JPG"},
+      {id:8,name:"Trío Marino",cat:"Del Mar",price:12,fav:true,desc:"Ceviche, camote, yuca frita, chifles, arroz con mariscos y chicharrón de pescado.",img:"Trío-marino.jpeg.JPG"},
+      {id:9,name:"Pollo a la leña",cat:"Pollos a la leña",price:20,fav:false,desc:"1 pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"https://unsplash.com"},
+      {id:10,name:"1/2 Pollo a la leña",cat:"Pollos a la leña",price:10.5,fav:false,desc:"Medio pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"https://unsplash.com"},
+      {id:11,name:"1/4 Pollo a la leña",cat:"Pollos a la leña",price:5,fav:false,desc:"Cuarto de pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"https://unsplash.com"},
+      {id:12,name:"Mostro",cat:"Pollos a la leña",price:7,fav:true,desc:"Pollo asado con leña de algarrobo, papas fritas, arroz chaufa y ensalada.",img:"Mostrito.jpeg.JPG"},
+      {id:13,name:"Ají de gallina",cat:"Criollos",price:8,fav:false,desc:"Pollo deshilachado en cremosa salsa de ají amarillo, arroz, papa y aceituna.",img:"https://unsplash.com"},
+      {id:14,name:"Arroz chaufa",cat:"Criollos",price:3.5,fav:true,desc:"Arroz frito salteado con trozos de pollo, huevo frito, especies y cebolla china.",img:"Chaufa.jpeg.JPG"},
+      {id:15,name:"Pollo saltado",cat:"Criollos",price:6,fav:false,desc:"180grm de pechuga de pollo salteada al wok con tomate, cebolla, arroz y papas fritas.",img:"https://unsplash.com"},
+      {id:16,name:"Lomo saltado",cat:"Criollos",price:7,fav:false,desc:"180grm de lomo de res salteado y flameado con tomate, cebolla, arroz y papas fritas.",img:"https://unsplash.com"},
+      {id:17,name:"Mostrito",cat:"Criollos",price:5,fav:false,desc:"Arroz chaufa, 1/8 pollo broaster, ensalada fresca y papas fritas naturales.",img:"Mostrito.jpeg.JPG"},
+      {id:18,name:"Alitas BBQ",cat:"Criollos",price:5,fav:false,desc:"4 alitas en salsa bbq con arroz chaufa, papas fritas y ensalada.",img:"https://unsplash.com"},
+      {id:19,name:"Anticuchos",cat:"Criollos",price:6,fav:false,desc:"3 palos de anticuchos acompañados con papas a la huancaína, ensalada y cremas.",img:"https://unsplash.com"},
+      {id:20,name:"Tallarines saltado de carne o pollo",cat:"Pastas",price:7,fav:true,desc:"Tallarines salteados al wok con 180g de carne o pollo, cebolla, tomate y sillao.",img:"Tallarín-saltado.jpeg.JPG"},
+      {id:21,name:"Tallarines a la huancaína",cat:"Pastas",price:10,fav:true,desc:"Pasta con salsa de ají amarillo y queso acompañada con lomo saltado.",img:"Tallarín-huancaina.jpeg.JPG"},
+
+{id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:true,desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
 ];
-let cart = [];
-let userLocationLink = "";
-// RENDERIZAR FAVORITOS Y CARTA
-function renderMenus(filter = "todos") {
-const favGrid = document.getElementById("favoritesGrid");
-const fullGrid = document.getElementById("fullMenuGrid");
-favGrid.innerHTML = menuItems
-.filter(item => item.favorite)
-.map(item => createDishCard(item, true))
-.join("");
-const filtered = filter === "todos"
-? menuItems
-: menuItems.filter(item => item.category === filter);
-fullGrid.innerHTML = filtered
-.map(item => createDishCard(item, false))
-.join("");
+let cart=[],gps="",started=false;
+const cardHTML=(i,f)=><div class="card">${f?'<span class="fav-tag">⭐ Favorito</span>':''}<span class="cat-tag">${i.cat}</span><img src="${i.img}" onerror="this.src='https://unsplash.com'"><div class="card-body"><h3>${i.name}</h3><p>${i.desc}</p><div class="card-foot"><span class="price">$${i.price}</span><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div></div></div>;
+function render(c="todos"){
+document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>cardHTML(i,true)).join("");
+document.getElementById("fullGrid").innerHTML=(c==="todos"?menu:menu.filter(i=>i.cat===c)).map(i=>cardHTML(i,false)).join("");
 }
-function createDishCard(item, showFavBadge) {
-return `
+function filterMenu(c,b){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");render(c)}
+function getGPS(){
+const s=document.getElementById("geoSt");
+if(!navigator.geolocation){s.textContent="⚠️ Sin soporte GPS";return}
+s.textContent="⏳ Obteniendo ubicación...";
+navigator.geolocation.getCurrentPosition(p=>{gps=https://google.com{p.coords.latitude},${p.coords.longitude};s.textContent="✅ Ubicación lista para enviar con tu pedido.";document.getElementById("mapFr").src=https://google.com{p.coords.latitude},${p.coords.longitude}&output=embed},()=>s.textContent="⚠️ No se pudo acceder al GPS");
+}
+function openChat(){
+document.getElementById("chatWin").classList.add("open");document.getElementById("nBadge").style.display="none";
+if(!started){bot("¡Hola! 👋 Soy el Asistente Inca. Te ayudo con el menú, precios, pago móvil o a armar tu pedido.
+¿Qué se te antoja hoy?");chips(["🍽️ Ver menú","⭐ Recomiéndame algo","💳 Pago Móvil"]);started=true}
+}
+function bot(h){const d=document.createElement("div");d.className="m-bot";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+function usr(t){const d=document.createElement("div");d.className="m-usr";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+function chips(a){document.getElementById("cChips").innerHTML=a.map(x=><button class="chip" onclick="pick('${x}')">${x}</button>).join("")}
+function pick(o){
+const t=o.replace(/^[^\w\sÁÉÍÓÚáéíóúÑñ]+\s*/,"");usr(t);
+setTimeout(()=>{
+if(o.includes("Ver menú")){bot("🍽️ Elige una categoría:");chips(["🥟 Entradas","🐟 Del Mar","🍗 Pollos a la leña","🥘 Criollos","🍝 Pastas"])}
+else if(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"].some(c=>o.includes(c))){
+const list=menu.filter(i=>i.cat.toLowerCase()===t.toLowerCase());
+bot(<strong>${o}:</strong>+list.map(i=><div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>).join(""));
+chips(["🍽️ Ver menú","📲 Finalizar pedido"]);
+}else if(o.includes("Recomiéndame")){
+const f=[menu[3],menu[7],menu[20]];
+bot("⭐ Favoritos de hoy:"+f.map(i=><div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>).join(""));
+chips(["🍽️ Ver menú","💳 Pago Móvil"]);
+}else if(o.includes("Pago Móvil")){
+bot("💳 Pago Móvil:
+• CI: 25.433.809
+• Tlf: 0422-1009540
+• Banco: 0102 (Venezuela)
+🕒 Hasta las 7:00 PM");
+chips(["🍽️ Ver menú","📍 Compartir GPS"]);
+}else if(o.includes("GPS")){getGPS();bot("📡 Solicitando ubicación GPS...")}
+else if(o.includes("Finalizar")||o.includes("WhatsApp"))sendWA();
+},250);
+}
+function sendUsr(){
+const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";const l=v.toLowerCase();
+setTimeout(()=>{
+if(l.includes("menu")||l.includes("menú")||l.includes("carta"))pick("🍽️ Ver menú");
+else if(l.includes("ceviche")||l.includes("mar"))pick("🐟 Del Mar");
+else if(l.includes("pollo")||l.includes("leña"))pick("🍗 Pollos a la leña");
+else if(l.includes("chaufa")||l.includes("lomo"))pick("🥘 Criollos");
+else if(l.includes("tallarin")||l.includes("pasta"))pick("🍝 Pastas");
+else if(l.includes("pago")||l.includes("banco"))pick("💳 Pago Móvil");
+else{bot("¡Anotado! Envía tu pedido por WhatsApp al (0422) 100-9540 o mira el menú:");chips(["🍽️ Ver menú","📲 Enviar por WhatsApp"])}
+},250);
+}
+function addCart(id){
+const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
+const tot=cart.reduce((s,x)=>s+x.price,0);
+document.getElementById("cartBar").style.display="flex";
+document.getElementById("cartTxt").textContent=🛒 ${cart.length} plato(s) ($${tot});
+if(!document.getElementById("chatWin").classList.contains("open"))openChat();
+setTimeout(()=>{bot(✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.);chips(["🍽️ Seguir viendo menú","📲 Finalizar pedido"])},200);
+}
+function sendWA(){
+let m="Hola Tu Punto Inca, mi pedido es:%0A%0A";
+if(cart.length){cart.forEach((x,i)=>m+=${i+1}. ${x.name} - $${x.price}%0A);m+=%0A*Total:* $${cart.reduce((s,x)=>s+x.price,0)}}
+else m+="Quisiera información del menú.";
+if(gps)m+=%0A%0A📍 *Mi ubicación:* ${encodeURIComponent(gps)};
+window.open(https://wa.me{m},"_blank");
+}
+render();
 
-${showFavBadge ? '⭐ Favorito' : ''}
-${item.category}
+</script
 
 
+> </body> </html>
 
-${item.name}
-
-${item.desc}
-$${item.price}
-+ Agregar
-
-
-
-`;
-}
-function filterMenu(category, btn) {
-document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-btn.classList.add("active");
-renderMenus(category);
-}
-// HORARIO AUTOMÁTICO (ABIERTO HASTA LAS 7 PM)
-function checkRestaurantStatus() {
-const now = new Date();
-const hour = now.getHours();
-const isOpen = hour >= 11 && hour < 19;
-const heroText = document.getElementById("heroStatusText");
-const heroDot = document.getElementById("heroStatusDot");
-const chatLabel = document.getElementById("chatStatusLabel");
-if (isOpen) {
-heroText.textContent = "ABIERTO AHORA • HASTA LAS 7 PM";
-heroDot.style.backgroundColor = "#f5d011";
-chatLabel.textContent = "En línea · Restaurante abierto";
-} else {
-heroText.textContent = "CERRADO AHORA • ABRIMOS 11:30 AM";
-heroDot.style.backgroundColor = "#ef4444";
-chatLabel.textContent = "En línea · Recibiendo reservas";
-}
-}
-// UBICACIÓN EN TIEMPO REAL
-function getLiveLocation() {
-const status = document.getElementById("geoStatus");
-if (!navigator.geolocation) {
-status.textContent = "⚠️ Tu navegador no soporta geolocalización.";
-return;
-}
-status.textContent = "⏳ Obteniendo tu ubicación actual...";
-navigator.geolocation.getCurrentPosition(
-(pos) => {
-const lat = pos.coords.latitude;
-const lng = pos.coords.longitude;
-userLocationLink = https://google.com{lat},${lng};
-status.innerHTML = ✅ Ubicación detectada. Se enviará automáticamente con tu pedido por WhatsApp.;
-document.getElementById("mapFrame").src = https://google.com{lat},${lng}&output=embed;
-},
-() => {
-status.textContent = "⚠️ No se pudo acceder al GPS. Puedes escribir tu dirección al hacer el pedido.";
-}
-);
-}
-// =========================================
-// LÓGICA DEL ASISTENTE INCA
-// =========================================
-const chatWindow = document.getElementById("chatWindow");
-const chatBody = document.getElementById("chatBody");
-const quickChips = document.getElementById("quickChips");
-let chatInitialized = false;
-function openChat() {
-chatWindow.classList.add("open");
-document.getElementById("notifBadge").style.display = "none";
-if (!chatInitialized) {
-initChat();
-chatInitialized = true;
-}
-}
-function closeChat() {
-chatWindow.classList.remove("open");
-}
-function initChat() {
-addBotMessage(¡Hola! 👋 Soy el <strong>Asistente Inca</strong>. Te ayudo con el menú, precios, horario, ubicación o a <strong>armar tu pedido</strong>.<br><br> ✅ Abierto ahora · hasta las 7 pm.<br> ¿Qué se te antoja hoy?);
-setChips(["🍽️ Ver menú", "⭐ Recomiéndame algo", "💳 Pago Móvil y ubicación"]);
-}
-function addBotMessage(html) {
-const div = document.createElement("div");
-div.className = "msg-bot";
-div.innerHTML = html;
-chatBody.appendChild(div);
-chatBody.scrollTop = chatBody.scrollHeight;
-}
-function addUserMessage(text) {
-const div = document.createElement("div");
-div.className = "msg-user";
-div.textContent = text;
-chatBody.appendChild(div);
-chatBody.scrollTop = chatBody.scrollHeight;
-}
-function setChips(options) {
-quickChips.innerHTML = options
-.map(opt => <button class="chip-btn" onclick="selectChip('${opt}')">${opt}</button>)
-.join("");
-}
-function selectChip(option) {
-const cleanText = option.replace(/^[^\w\sÁÉÍÓÚáéíóúÑñ]+\s*/, "");
-addUserMessage(cleanText);
-setTimeout(() => {
-if (option.includes("Ver menú")) {
-addBotMessage(🍽️ ¿Qué te provoca hoy? Elige una categoría:<br> <a href="#carta" onclick="closeChat()">o mira el menú completo en la página</a>);
-setChips(["🥟 Entradas", "🐟 Del Mar", "🍗 Pollos a la leña", "🥘 Criollos", "🍝 Pastas"]);
-}
-else if (
-option.includes("Entradas") ||
-option.includes("Del Mar") ||
-option.includes("Pollos a la leña") ||
-option.includes("Criollos") ||
-option.includes("Pastas")
-) {
-const catName = cleanText;
-const items = menuItems.filter(i => i.category.toLowerCase() === catName.toLowerCase());
-let cardsHtml = <strong>${option}:</strong>;
-items.forEach(item => {
-cardsHtml += <div class="chat-dish-card"> <div class="chat-dish-left"> <img src="${item.img}" alt="${item.name}" onerror="this.src='https://unsplash.com'"> <div class="chat-dish-meta"> <h5>${item.name}</h5> <span>$${item.price}</span> </div> </div> <button class="chat-add-btn" onclick="addToCart(${item.id})">+ Agregar</button> </div>;
-});
-addBotMessage(cardsHtml);
-setChips(["🍽️ Ver menú", "⭐ Recomiéndame algo", "📲 Finalizar pedido"]);
-}
-else if (option.includes("Recomiéndame")) {
-const favs = [menuItems, menuItems, menuItems]; // Ceviche, Trío Marino, Tallarines a la huancaína
-let recHtml = ⭐ Nuestras especialidades más pedidas hoy:;
-favs.forEach(fav => {
-recHtml += <div class="chat-dish-card"> <div class="chat-dish-left"> <img src="${fav.img}" alt="${fav.name}" onerror="this.src='https://unsplash.com'"> <div class="chat-dish-meta"> <h5>${fav.name}</h5> <span>$${fav.price}</span> </div> </div> <button class="chat-add-btn" onclick="addToCart(${fav.id})">+ Agregar</button> </div>;
-});
-addBotMessage(recHtml);
-setChips(["🍽️ Ver menú", "💳 Pago Móvil y ubicación"]);
-}
-else if (option.includes("Pago Móvil")) {
-addBotMessage(💳 <strong>Datos Pago Móvil:</strong><br> • Cédula: <strong>25.433.809</strong><br> • Teléfono: <strong>0422-1009540</strong><br> • Banco: <strong>0102 (Venezuela)</strong><br><br> 🕒 <strong>Horario:</strong> Hasta las 7:00 PM.<br> 📞 <strong>Delivery:</strong> (0422) 100-9540);
-setChips(["🍽️ Ver menú", "📍 Compartir mi GPS"]);
-}
-else if (option.includes("GPS")) {
-getLiveLocation();
-addBotMessage("📡 Solicitando tu ubicación GPS para enviarla junto con tu pedido...");
-}
-else if (option.includes("Finalizar") || option.includes("WhatsApp")) {
-sendOrderToWhatsApp();
-}
-}, 300);
-}
-function handleKeyPress(e) {
-if (e.key === "Enter") handleUserInput();
-}
-function handleUserInput() {
-const input = document.getElementById("chatInput");
-const text = input.value.trim();
-if (!text) return;
-addUserMessage(text);
-input.value = "";
-const lower = text.toLowerCase();
-setTimeout(() => {
-if (lower.includes("menu") || lower.includes("menú") || lower.includes("carta")) {
-selectChip("🍽️ Ver menú");
-} else if (lower.includes("entrada") || lower.includes("tequeño") || lower.includes("causa") || lower.includes("huancaina")) {
-selectChip("🥟 Entradas");
-} else if (lower.includes("ceviche") || lower.includes("mar") || lower.includes("tigre") || lower.includes("trio") || lower.includes("duo")) {
-selectChip("🐟 Del Mar");
-} else if (lower.includes("pollo") || lower.includes("leña") || lower.includes("mostro")) {
-selectChip("🍗 Pollos a la leña");
-} else if (lower.includes("chaufa") || lower.includes("lomo") || lower.includes("criollo") || lower.includes("aji") || lower.includes("anticucho") || lower.includes("alita")) {
-selectChip("🥘 Criollos");
-} else if (lower.includes("tallarin") || lower.includes("pasta") || lower.includes("verde")) {
-selectChip("🍝 Pastas");
-} else if (lower.includes("pago") || lower.includes("ubicacion") || lower.includes("movil") || lower.includes("móvil") || lower.includes("banco")) {
-selectChip("💳 Pago Móvil y ubicación");
-} else {
-addBotMessage(¡Anotado! Si deseas confirmar tu pedido o hablar directo con nuestro equipo, puedes enviarlo por WhatsApp al <strong>(0422) 100-9540</strong> o explorar la carta:);
-setChips(["🍽️ Ver menú", "📲 Enviar por WhatsApp"]);
-}
-}, 350);
-}
-// CARRITO DE PEDIDOS
-function addToCart(id) {
-const dish = menuItems.find(i => i.id === id);
-if (!dish) return;
-cart.push(dish);
-const total = cart.reduce((sum, item) => sum + item.price, 0);
-const banner = document.getElementById("cartBanner");
-banner.style.display = "flex";
-document.getElementById("cartSummaryText").textContent = 🛒 ${cart.length} plato(s) ($${total});
-if (chatWindow.classList.contains("open")) {
-addBotMessage(✅ Agregaste <strong>${dish.name}</strong> ($${dish.price}) a tu pedido. Total actual: <strong>$${total}</strong>.);
-} else {
-openChat();
-setTimeout(() => {
-addBotMessage(✅ Agregaste <strong>${dish.name}</strong> ($${dish.price}) a tu pedido. ¿Deseas agregar algo más o enviarlo por WhatsApp?);
-setChips(["🍽️ Seguir viendo menú", "📲 Finalizar pedido"]);
-}, 250);
-}
-}
-function sendOrderToWhatsApp() {
-let message = "Hola Tu Punto Inca, quiero realizar el siguiente pedido:%0A%0A";
-if (cart.length > 0) {
-cart.forEach((item, idx) => {
-message += ${idx + 1}. ${item.name} - $${item.price}%0A;
-});
-const total = cart.reduce((sum, item) => sum + item.price, 0);
-message += %0A*Total estimado:* $${total};
-} else {
-message += "Quisiera consultar disponibilidad de platos.";
-}
-if (userLocationLink) {
-message += %0A%0A📍 *Mi ubicación en tiempo real:* ${encodeURIComponent(userLocationLink)};
-}
-window.open(https://wa.me{message}, "_blank");
-}
-function toggleMobileMenu() {
-document.getElementById("navLinks").classList.toggle("active");
-}
-// INICIALIZAR
-renderMenus();
-checkRestaurantStatus();
-</script>
-</body>
-</html>
