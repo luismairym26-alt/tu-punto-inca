@@ -6,64 +6,65 @@
   <title>Tu Punto Inca | El auténtico sabor del Perú</title>
   <link href="https://googleapis.com" rel="stylesheet">
   <style>
-    :root{--bg-dark:#14130f;--bg-card:#1d1b15;--yellow:#f5d011;--cream:#fbf8e8;--navy:#14223d;--white:#fff;--gray:#d4d2c9;--green:#25d366}
+    :root{--yellow:#f5d011;--cream:#fbf8e8;--navy:#14223d;--dark:#181611;--green:#25d366}
     *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:var(--bg-dark);color:var(--white);background-image:radial-gradient(#2c2817 1.5px,transparent 1.5px),radial-gradient(#2c2817 1.5px,#14130f 1.5px);background-size:40px 40px;background-position:0 0,20px 20px}
-    .top-bar{background:var(--yellow);color:#111;text-align:center;padding:10px 15px;font-size:.85rem;font-weight:500;position:sticky;top:0;z-index:100}
+    body{font-family:'Poppins',sans-serif;color:#1e1c16;background:linear-gradient(180deg,#181611 0%,#262115 22%,#f5edd6 42%,#fbf5e4 75%,#f7e7a9 100%);overflow-x:hidden}
+    .top-bar{background:var(--yellow);color:#111;text-align:center;padding:9px 14px;font-size:.84rem;font-weight:500;position:sticky;top:0;z-index:100}
     .top-bar a{color:#111;font-weight:700;text-decoration:underline}
-    header{background:rgba(20,19,15,.95);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(245,208,17,.15);position:sticky;top:50px;z-index:99}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
-    .logo{width:44px;height:44px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:.52rem;text-align:center;line-height:1.1;border:2px solid #fff;flex-shrink:0}
-    .brand-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700}
+    header{background:rgba(24,22,17,.96);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--yellow);position:sticky;top:48px;z-index:99}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff}
+    .logo-box{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#ffe44d 0%,#f5d011 70%,#c99e00 100%);border:2.5px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:.5rem;line-height:1.05;text-align:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.35)}
+    .logo-box img{width:100%;height:100%;object-fit:cover}
+    .brand-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff}
     .nav-links{display:flex;gap:20px;list-style:none}
-    .nav-links a{color:var(--white);text-decoration:none;font-size:.9rem}
-    .menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.8rem;cursor:pointer}
-    .hero{max-width:1100px;margin:0 auto;padding:45px 22px 55px}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,208,17,.1);border:1px solid rgba(245,208,17,.45);color:var(--yellow);padding:6px 16px;border-radius:50px;font-size:.78rem;font-weight:600;margin-bottom:22px}
+    .nav-links a{color:#fff;text-decoration:none;font-size:.9rem;font-weight:500}
+    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
+    .hero{max-width:1100px;margin:0 auto;padding:42px 22px 65px;color:#fff}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,208,17,.15);border:1px solid var(--yellow);color:var(--yellow);padding:6px 15px;border-radius:50px;font-size:.76rem;font-weight:600;margin-bottom:20px}
     .dot{width:9px;height:9px;border-radius:50%;background:var(--yellow)}
-    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,6vw,3.8rem);line-height:1.12;margin-bottom:20px;max-width:720px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.12;margin-bottom:18px;max-width:720px}
     .hero h1 span{color:var(--yellow);border-bottom:4px solid var(--yellow)}
-    .hero p{color:var(--gray);font-size:1.02rem;line-height:1.6;max-width:600px;margin-bottom:28px}
+    .hero p{color:#e6e1d3;font-size:1rem;line-height:1.6;max-width:600px;margin-bottom:26px}
     .btns{display:flex;flex-wrap:wrap;gap:12px}
-    .btn-y{background:var(--yellow);color:#111;padding:13px 26px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.92rem;border:none;cursor:pointer}
-    .btn-o{background:rgba(255,255,255,.05);color:var(--white);padding:13px 26px;border-radius:50px;font-weight:600;text-decoration:none;font-size:.92rem;border:1.5px solid rgba(255,255,255,.6);cursor:pointer}
-    .sec{max-width:1100px;margin:0 auto;padding:40px 22px}
-    .sec-title{font-family:'Playfair Display',serif;font-size:1.95rem;margin-bottom:6px}
-    .sec-title span{color:var(--yellow)}
-    .sec-sub{color:var(--gray);font-size:.92rem;margin-bottom:24px}
-    .tabs{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;margin-bottom:22px}
-    .tab{background:var(--bg-card);color:var(--gray);border:1px solid rgba(245,208,17,.25);padding:8px 16px;border-radius:50px;font-size:.86rem;font-weight:600;cursor:pointer;white-space:nowrap}
-    .tab.active{background:var(--yellow);color:#111}
+    .btn-y{background:var(--yellow);color:#111;padding:13px 26px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.92rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(245,208,17,.35)}
+    .btn-o{background:rgba(255,255,255,.1);color:#fff;padding:13px 26px;border-radius:50px;font-weight:600;text-decoration:none;font-size:.92rem;border:1.5px solid #fff;cursor:pointer}
+    .sec{max-width:1100px;margin:0 auto;padding:42px 20px}
+    .sec-title{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:6px;color:#181611}
+    .sec-title span{color:#b8860b;border-bottom:3px solid var(--yellow)}
+    .sec-sub{color:#4a4538;font-size:.94rem;margin-bottom:24px}
+    .tabs{display:flex;gap:9px;overflow-x:auto;padding-bottom:10px;margin-bottom:22px}
+    .tab{background:#fff;color:#2b271d;border:1.5px solid #e2d4a7;padding:8px 16px;border-radius:50px;font-size:.86rem;font-weight:600;cursor:pointer;white-space:nowrap}
+    .tab.active{background:var(--yellow);color:#111;border-color:#111}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
-    .card{background:var(--bg-card);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;position:relative}
-    .fav-tag{position:absolute;top:12px;left:12px;background:var(--yellow);color:#111;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px}
-    .cat-tag{position:absolute;top:12px;right:12px;background:rgba(20,19,15,.85);color:var(--yellow);font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:20px}
-    .card img{width:100%;height:200px;object-fit:cover;background:#25221a}
+    .card{background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #eadcb3;box-shadow:0 6px 18px rgba(45,35,10,.08);display:flex;flex-direction:column;position:relative}
+    .fav-tag{position:absolute;top:12px;left:12px;background:var(--yellow);color:#111;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+    .cat-tag{position:absolute;top:12px;right:12px;background:rgba(24,22,17,.88);color:var(--yellow);font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:20px}
+    .card img{width:100%;height:205px;object-fit:cover;background:#eee3c3}
     .card-body{padding:16px;display:flex;flex-direction:column;flex-grow:1}
-    .card-body h3{font-size:1.1rem;margin-bottom:6px}
-    .card-body p{font-size:.84rem;color:var(--gray);margin-bottom:14px;line-height:1.45}
+    .card-body h3{font-size:1.1rem;margin-bottom:6px;color:#181611}
+    .card-body p{font-size:.84rem;color:#575143;margin-bottom:14px;line-height:1.45}
     .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-    .price{font-size:1.22rem;font-weight:700;color:var(--yellow)}
-    .add-btn{background:var(--yellow);color:#111;border:none;padding:8px 15px;border-radius:50px;font-weight:700;font-size:.84rem;cursor:pointer}
+    .price{font-size:1.25rem;font-weight:800;color:#181611}
+    .add-btn{background:var(--yellow);color:#111;border:1.5px solid #181611;padding:8px 15px;border-radius:50px;font-weight:700;font-size:.84rem;cursor:pointer}
     .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-    .box{background:var(--bg-card);border:1px solid rgba(245,208,17,.2);border-radius:18px;padding:22px}
-    .box h3{color:var(--yellow);margin-bottom:10px}
-    .box ul{list-style:none;color:var(--gray);font-size:.9rem;line-height:1.8}
-    .box a{color:var(--yellow);font-weight:600}
-    .pm-box{background:rgba(245,208,17,.08);border:1px dashed var(--yellow);padding:12px;border-radius:12px;margin-top:10px;font-size:.86rem;line-height:1.6}
-    .geo{margin-top:10px;font-size:.8rem;color:#a3e635;background:rgba(163,230,53,.1);padding:8px 12px;border-radius:8px}
-    .map{margin-top:14px;border-radius:14px;overflow:hidden;height:210px}
+    .box{background:#ffffff;border:1.5px solid #e6d39a;border-radius:18px;padding:22px;box-shadow:0 6px 18px rgba(45,35,10,.07)}
+    .box h3{color:#181611;margin-bottom:10px;font-size:1.2rem}
+    .box ul{list-style:none;color:#3d382c;font-size:.9rem;line-height:1.8}
+    .box a{color:#9a6b00;font-weight:700}
+    .pm-box{background:#fdf8e3;border:1.5px dashed #c99a00;padding:12px;border-radius:12px;margin-top:10px;font-size:.88rem;line-height:1.6;color:#181611}
+    .geo{margin-top:10px;font-size:.82rem;color:#166534;background:#dcfce7;padding:8px 12px;border-radius:8px;font-weight:500}
+    .map{margin-top:14px;border-radius:14px;overflow:hidden;height:210px;border:1px solid #dfd0a5}
     .float-stack{position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column;gap:12px;z-index:998}
-    .bot-btn{position:relative;width:58px;height:58px;border-radius:50%;background:var(--yellow);border:3px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,.5);cursor:pointer;font-weight:800;font-size:.55rem;color:#111;line-height:1.1}
+    .bot-btn{position:relative;width:60px;height:60px;border-radius:50%;background:var(--yellow);border:3px solid #181611;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;font-weight:800;font-size:.54rem;color:#111;line-height:1.1}
     .notif{position:absolute;top:-5px;right:-4px;background:#e11d48;color:#fff;width:22px;height:22px;border-radius:50%;font-size:.75rem;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
-    .wa-btn{width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.5);text-decoration:none;font-size:1.7rem}
-    .chat{position:fixed;bottom:16px;right:16px;width:370px;max-width:calc(100vw - 24px);height:600px;max-height:calc(100vh - 32px);background:var(--cream);border-radius:22px;box-shadow:0 15px 40px rgba(0,0,0,.65);display:none;flex-direction:column;overflow:hidden;z-index:1000}
+    .wa-btn{width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);text-decoration:none;font-size:1.75rem}
+    .chat{position:fixed;bottom:16px;right:16px;width:370px;max-width:calc(100vw - 24px);height:600px;max-height:calc(100vh - 32px);background:var(--cream);border-radius:22px;box-shadow:0 15px 40px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;z-index:1000;border:2px solid #181611}
     .chat.open{display:flex}
-    .chat-head{background:#14130f;color:#fff;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--yellow)}
+    .chat-head{background:#181611;color:#fff;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--yellow)}
     .chat-head-l{display:flex;align-items:center;gap:10px}
     .close-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer}
     .chat-body{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-    .m-bot{background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+    .m-bot{background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.08)}
     .m-usr{background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end}
     .c-card{background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
     .c-card-l{display:flex;align-items:center;gap:8px}
@@ -79,13 +80,16 @@
     .in-row input{flex:1;background:#efece0;border:none;padding:10px 15px;border-radius:50px;font-size:.85rem;outline:none}
     .send{width:40px;height:40px;border-radius:50%;background:var(--yellow);border:none;font-weight:700;cursor:pointer}
     .disc{text-align:center;font-size:.7rem;color:#555;margin-top:6px}
-    @media(max-width:768px){.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:#14130f;flex-direction:column;padding:20px}.nav-links.active{display:flex}.menu-toggle{display:block}}
+    @media(max-width:768px){.nav-links{display:none;position:absolute;top:68px;left:0;width:100%;background:#181611;flex-direction:column;padding:20px}.nav-links.active{display:flex}.menu-toggle{display:block}}
   </style>
 </head>
 <body>
   <div class="top-bar">Pedidos, delivery y consultas por llamada o WhatsApp:<br><a href="https://wa.me" target="_blank">(0422) 100-9540</a></div>
   <header>
-    <a href="#" class="brand"><div class="logo">TU PUNTO<br>INCA</div><span class="brand-name">Tu Punto Inca</span></a>
+    <a href="#" class="brand">
+      <div class="logo-box"><img src="logo.png" alt="Logo" onerror="this.style.display='none';this.parentElement.innerHTML='☀️<br>TU PUNTO<br>INCA'"></div>
+      <span class="brand-name">Tu Punto Inca</span>
+    </a>
     <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#favoritos">Favoritos</a></li>
@@ -96,7 +100,7 @@
   </header>
 
   <section class="hero">
-    <div class="badge"><span class="dot" id="hDot"></span><span id="hTxt">ABIERTO AHORA • HASTA LAS 7 PM</span></div>
+    <div class="badge"><span class="dot"></span><span>ABIERTO AHORA • HASTA LAS 7 PM</span></div>
     <h1>El auténtico sabor del <span>Perú</span>, aquí en tu punto.</h1>
     <p>Ceviches frescos de corvina, pollo a la leña de algarrobo, lomo saltado y tallarines con todo el sazón criollo. Ven a disfrutarlo o pídelo a domicilio.</p>
     <div class="btns"><a href="#carta" class="btn-y">Ver el menú</a><a href="#ubicacion" class="btn-o">Delivery y pagos</a></div>
@@ -148,13 +152,13 @@
   </section>
 
   <div class="float-stack">
-    <button class="bot-btn" onclick="openChat()">TU PUNTO<br>INCA<span class="notif" id="nBadge">1</span></button>
+    <button class="bot-btn" onclick="openChat()">☀️<br>TU PUNTO<br>INCA<span class="notif" id="nBadge">1</span></button>
     <a href="https://wa.me?text=Hola%20Tu%20Punto%20Inca" target="_blank" class="wa-btn">✆</a>
   </div>
 
   <div class="chat" id="chatWin">
     <div class="chat-head">
-      <div class="chat-head-l"><div class="logo" style="width:36px;height:36px;font-size:.45rem">TU PUNTO<br>INCA</div><div><h4>Asistente Inca</h4><p style="font-size:.75rem;color:#d4d2c9">🟢 En línea · Listo para ayudarte</p></div></div>
+      <div class="chat-head-l"><div class="logo-box" style="width:36px;height:36px;font-size:.44rem">☀️<br>TU PUNTO<br>INCA</div><div><h4>Asistente Inca</h4><p style="font-size:.75rem;color:#d4d2c9">🟢 En línea · Listo para ayudarte</p></div></div>
       <button class="close-x" onclick="document.getElementById('chatWin').classList.remove('open')">✕</button>
     </div>
     <div class="cart-bar" id="cartBar"><span id="cartTxt">🛒 0 platos ($0)</span><button onclick="sendWA()">Enviar Pedido 📲</button></div>
@@ -165,12 +169,11 @@
       <div class="disc">Asistente automático · Atención personal: <strong>(0422) 100-9540</strong></div>
     </div>
   </div>
-
   <script>
     const menu=[
-      {id:1,name:"Papas a la Huancaína",cat:"Entradas",price:5,fav:false,desc:"Rodajas de papa bañadas en cremosa salsa tradicional de ají amarillo y queso.",img:"https://unsplash.com"},
+      {id:1,name:"Papas a la Huancaína",cat:"Entradas",price:5,fav:false,desc:"Rodajas de papa bañadas en cremosa salsa de ají amarillo y queso.",img:"https://unsplash.com"},
       {id:2,name:"Tequeños",cat:"Entradas",price:6,fav:false,desc:"Crujientes tequeños dorados rellenos de queso blanco con salsa de la casa.",img:"https://unsplash.com"},
-      {id:3,name:"Causa Limeña",cat:"Entradas",price:7,fav:false,desc:"Masa de papa amarilla sazonada con limón y ají amarillo rellena con pollo y aguacate.",img:"https://unsplash.com"},
+      {id:3,name:"Causa Limeña",cat:"Entradas",price:7,fav:false,desc:"Masa de papa amarilla sazonada con limón y ají amarillo rellena con pollo.",img:"https://unsplash.com"},
       {id:4,name:"Ceviche peruano",cat:"Del Mar",price:6,fav:true,desc:"Pescado blanco marinado con limón criollo, cebolla morada, camote, yuca frita y chifles.",img:"Ceviche.jpeg.JPG"},
       {id:5,name:"Leche de tigre",cat:"Del Mar",price:7,fav:true,desc:"Concentrado cítrico con trozos de pescado, chicharrón de pescado y camote.",img:"Leche-tigre.jpeg.JPG"},
       {id:6,name:"Ceviche para compartir",cat:"Del Mar",price:10,fav:false,desc:"350grm de corvina fresca con yuca frita, tostones, camote y cebolla morada.",img:"Ceviche.jpeg.JPG"},
@@ -189,84 +192,75 @@
       {id:19,name:"Anticuchos",cat:"Criollos",price:6,fav:false,desc:"3 palos de anticuchos acompañados con papas a la huancaína, ensalada y cremas.",img:"https://unsplash.com"},
       {id:20,name:"Tallarines saltado de carne o pollo",cat:"Pastas",price:7,fav:true,desc:"Tallarines salteados al wok con 180g de carne o pollo, cebolla, tomate y sillao.",img:"Tallarín-saltado.jpeg.JPG"},
       {id:21,name:"Tallarines a la huancaína",cat:"Pastas",price:10,fav:true,desc:"Pasta con salsa de ají amarillo y queso acompañada con lomo saltado.",img:"Tallarín-huancaina.jpeg.JPG"},
-
-{id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:true,desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
-];
-let cart=[],gps="",started=false;
-const cardHTML=(i,f)=><div class="card">${f?'<span class="fav-tag">⭐ Favorito</span>':''}<span class="cat-tag">${i.cat}</span><img src="${i.img}" onerror="this.src='https://unsplash.com'"><div class="card-body"><h3>${i.name}</h3><p>${i.desc}</p><div class="card-foot"><span class="price">$${i.price}</span><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div></div></div>;
-function render(c="todos"){
-document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>cardHTML(i,true)).join("");
-document.getElementById("fullGrid").innerHTML=(c==="todos"?menu:menu.filter(i=>i.cat===c)).map(i=>cardHTML(i,false)).join("");
-}
-function filterMenu(c,b){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");render(c)}
-function getGPS(){
-const s=document.getElementById("geoSt");
-if(!navigator.geolocation){s.textContent="⚠️ Sin soporte GPS";return}
-s.textContent="⏳ Obteniendo ubicación...";
-navigator.geolocation.getCurrentPosition(p=>{gps=https://google.com{p.coords.latitude},${p.coords.longitude};s.textContent="✅ Ubicación lista para enviar con tu pedido.";document.getElementById("mapFr").src=https://google.com{p.coords.latitude},${p.coords.longitude}&output=embed},()=>s.textContent="⚠️ No se pudo acceder al GPS");
-}
-function openChat(){
-document.getElementById("chatWin").classList.add("open");document.getElementById("nBadge").style.display="none";
-if(!started){bot("¡Hola! 👋 Soy el Asistente Inca. Te ayudo con el menú, precios, pago móvil o a armar tu pedido.
-¿Qué se te antoja hoy?");chips(["🍽️ Ver menú","⭐ Recomiéndame algo","💳 Pago Móvil"]);started=true}
-}
-function bot(h){const d=document.createElement("div");d.className="m-bot";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
-function usr(t){const d=document.createElement("div");d.className="m-usr";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
-function chips(a){document.getElementById("cChips").innerHTML=a.map(x=><button class="chip" onclick="pick('${x}')">${x}</button>).join("")}
-function pick(o){
-const t=o.replace(/^[^\w\sÁÉÍÓÚáéíóúÑñ]+\s*/,"");usr(t);
-setTimeout(()=>{
-if(o.includes("Ver menú")){bot("🍽️ Elige una categoría:");chips(["🥟 Entradas","🐟 Del Mar","🍗 Pollos a la leña","🥘 Criollos","🍝 Pastas"])}
-else if(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"].some(c=>o.includes(c))){
-const list=menu.filter(i=>i.cat.toLowerCase()===t.toLowerCase());
-bot(<strong>${o}:</strong>+list.map(i=><div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>).join(""));
-chips(["🍽️ Ver menú","📲 Finalizar pedido"]);
-}else if(o.includes("Recomiéndame")){
-const f=[menu[3],menu[7],menu[20]];
-bot("⭐ Favoritos de hoy:"+f.map(i=><div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>).join(""));
-chips(["🍽️ Ver menú","💳 Pago Móvil"]);
-}else if(o.includes("Pago Móvil")){
-bot("💳 Pago Móvil:
-• CI: 25.433.809
-• Tlf: 0422-1009540
-• Banco: 0102 (Venezuela)
-🕒 Hasta las 7:00 PM");
-chips(["🍽️ Ver menú","📍 Compartir GPS"]);
-}else if(o.includes("GPS")){getGPS();bot("📡 Solicitando ubicación GPS...")}
-else if(o.includes("Finalizar")||o.includes("WhatsApp"))sendWA();
-},250);
-}
-function sendUsr(){
-const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";const l=v.toLowerCase();
-setTimeout(()=>{
-if(l.includes("menu")||l.includes("menú")||l.includes("carta"))pick("🍽️ Ver menú");
-else if(l.includes("ceviche")||l.includes("mar"))pick("🐟 Del Mar");
-else if(l.includes("pollo")||l.includes("leña"))pick("🍗 Pollos a la leña");
-else if(l.includes("chaufa")||l.includes("lomo"))pick("🥘 Criollos");
-else if(l.includes("tallarin")||l.includes("pasta"))pick("🍝 Pastas");
-else if(l.includes("pago")||l.includes("banco"))pick("💳 Pago Móvil");
-else{bot("¡Anotado! Envía tu pedido por WhatsApp al (0422) 100-9540 o mira el menú:");chips(["🍽️ Ver menú","📲 Enviar por WhatsApp"])}
-},250);
-}
-function addCart(id){
-const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
-const tot=cart.reduce((s,x)=>s+x.price,0);
-document.getElementById("cartBar").style.display="flex";
-document.getElementById("cartTxt").textContent=🛒 ${cart.length} plato(s) ($${tot});
-if(!document.getElementById("chatWin").classList.contains("open"))openChat();
-setTimeout(()=>{bot(✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.);chips(["🍽️ Seguir viendo menú","📲 Finalizar pedido"])},200);
-}
-function sendWA(){
-let m="Hola Tu Punto Inca, mi pedido es:%0A%0A";
-if(cart.length){cart.forEach((x,i)=>m+=${i+1}. ${x.name} - $${x.price}%0A);m+=%0A*Total:* $${cart.reduce((s,x)=>s+x.price,0)}}
-else m+="Quisiera información del menú.";
-if(gps)m+=%0A%0A📍 *Mi ubicación:* ${encodeURIComponent(gps)};
-window.open(https://wa.me{m},"_blank");
-}
-render();
-
-</script
-
-
-> </body> </html>
-
+      {id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:true,desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
+    ];
+    let cart=[],gps="",started=false;
+    const cardHTML=(i,f)=>`<div class="card">${f?'<span class="fav-tag">⭐ Favorito</span>':''}<span class="cat-tag">${i.cat}</span><img src="${i.img}" onerror="this.src='https://unsplash.com'"><div class="card-body"><h3>${i.name}</h3><p>${i.desc}</p><div class="card-foot"><span class="price">$${i.price}</span><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div></div></div>`;
+    function render(c="todos"){
+      document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>cardHTML(i,true)).join("");
+      document.getElementById("fullGrid").innerHTML=(c==="todos"?menu:menu.filter(i=>i.cat===c)).map(i=>cardHTML(i,false)).join("");
+    }
+    function filterMenu(c,b){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");render(c)}
+    function getGPS(){
+      const s=document.getElementById("geoSt");
+      if(!navigator.geolocation){s.textContent="⚠️ Sin soporte GPS";return}
+      s.textContent="⏳ Obteniendo ubicación...";
+      navigator.geolocation.getCurrentPosition(p=>{gps=`https://google.com{p.coords.latitude},${p.coords.longitude}`;s.textContent="✅ Ubicación lista para enviar con tu pedido.";document.getElementById("mapFr").src=`https://google.com{p.coords.latitude},${p.coords.longitude}&output=embed`},()=>s.textContent="⚠️ No se pudo acceder al GPS");
+    }
+    function openChat(){
+      document.getElementById("chatWin").classList.add("open");document.getElementById("nBadge").style.display="none";
+      if(!started){bot("¡Hola! 👋 Soy el <strong>Asistente Inca</strong>. Te ayudo con el menú, precios, pago móvil o a <strong>armar tu pedido</strong>.<br>¿Qué se te antoja hoy?");chips(["🍽️ Ver menú","⭐ Recomiéndame algo","💳 Pago Móvil"]);started=true}
+    }
+    function bot(h){const d=document.createElement("div");d.className="m-bot";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+    function usr(t){const d=document.createElement("div");d.className="m-usr";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+    function chips(a){document.getElementById("cChips").innerHTML=a.map(x=>`<button class="chip" onclick="pick('${x}')">${x}</button>`).join("")}
+    function pick(o){
+      const t=o.replace(/^[^\w\sÁÉÍÓÚáéíóúÑñ]+\s*/,"");usr(t);
+      setTimeout(()=>{
+        if(o.includes("Ver menú")){bot("🍽️ Elige una categoría:");chips(["🥟 Entradas","🐟 Del Mar","🍗 Pollos a la leña","🥘 Criollos","🍝 Pastas"])}
+        else if(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"].some(c=>o.includes(c))){
+          const list=menu.filter(i=>i.cat.toLowerCase()===t.toLowerCase());
+          bot(`<strong>${o}:</strong>`+list.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
+          chips(["🍽️ Ver menú","📲 Finalizar pedido"]);
+        }else if(o.includes("Recomiéndame")){
+          const f=[menu,menu,menu];
+          bot("⭐ Favoritos de hoy:"+f.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
+          chips(["🍽️ Ver menú","💳 Pago Móvil"]);
+        }else if(o.includes("Pago Móvil")){
+          bot("💳 <strong>Pago Móvil:</strong><br>• CI: 25.433.809<br>• Tlf: 0422-1009540<br>• Banco: 0102 (Venezuela)<br>🕒 Hasta las 7:00 PM");
+          chips(["🍽️ Ver menú","📍 Compartir GPS"]);
+        }else if(o.includes("GPS")){getGPS();bot("📡 Solicitando ubicación GPS...")}
+        else if(o.includes("Finalizar")||o.includes("WhatsApp"))sendWA();
+      },250);
+    }
+    function sendUsr(){
+      const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";const l=v.toLowerCase();
+      setTimeout(()=>{
+        if(l.includes("menu")||l.includes("menú")||l.includes("carta"))pick("🍽️ Ver menú");
+        else if(l.includes("ceviche")||l.includes("mar"))pick("🐟 Del Mar");
+        else if(l.includes("pollo")||l.includes("leña"))pick("🍗 Pollos a la leña");
+        else if(l.includes("chaufa")||l.includes("lomo"))pick("🥘 Criollos");
+        else if(l.includes("tallarin")||l.includes("pasta"))pick("🍝 Pastas");
+        else if(l.includes("pago")||l.includes("banco"))pick("💳 Pago Móvil");
+        else{bot("¡Anotado! Envía tu pedido por WhatsApp al <strong>(0422) 100-9540</strong> o mira el menú:");chips(["🍽️ Ver menú","📲 Enviar por WhatsApp"])}
+      },250);
+    }
+    function addCart(id){
+      const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
+      const tot=cart.reduce((s,x)=>s+x.price,0);
+      document.getElementById("cartBar").style.display="flex";
+      document.getElementById("cartTxt").textContent=`🛒 ${cart.length} plato(s) ($${tot})`;
+      if(!document.getElementById("chatWin").classList.contains("open"))openChat();
+      setTimeout(()=>{bot(`✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.`);chips(["🍽️ Seguir viendo menú","📲 Finalizar pedido"])},200);
+    }
+    function sendWA(){
+      let m="Hola *Tu Punto Inca*, mi pedido es:%0A%0A";
+      if(cart.length){cart.forEach((x,i)=>m+=`${i+1}. ${x.name} - $${x.price}%0A`);m+=`%0A*Total:* $${cart.reduce((s,x)=>s+x.price,0)}`}
+      else m+="Quisiera información del menú.";
+      if(gps)m+=`%0A%0A📍 *Mi ubicación:* ${encodeURIComponent(gps)}`;
+      window.open(`https://wa.me{m}`,"_blank");
+    }
+    render();
+  </script>
+</body>
+</html>
