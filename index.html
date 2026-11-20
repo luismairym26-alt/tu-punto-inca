@@ -6,274 +6,324 @@
   <title>Tu Punto Inca | El auténtico sabor del Perú</title>
   <link href="https://googleapis.com" rel="stylesheet">
   <style>
-    :root{--yellow:#f5d011;--cream:#fbf8e8;--navy:#14223d;--dark:#181611;--green:#25d366}
+    :root{--yellow:#f5d011;--cream:#f5edd6;--card:#fcf9ef;--dark:#181611;--navy:#14223d;--green:#25d366;--red:#dc2626}
     *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;color:#1e1c16;background:linear-gradient(180deg,#181611 0%,#262115 22%,#f5edd6 42%,#fbf5e4 75%,#f7e7a9 100%);overflow-x:hidden}
-    .top-bar{background:var(--yellow);color:#111;text-align:center;padding:9px 14px;font-size:.84rem;font-weight:500;position:sticky;top:0;z-index:100}
-    .top-bar a{color:#111;font-weight:700;text-decoration:underline}
-    header{background:rgba(24,22,17,.96);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--yellow);position:sticky;top:48px;z-index:99}
-    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff}
-    .logo-box{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#ffe44d 0%,#f5d011 70%,#c99e00 100%);border:2.5px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:.5rem;line-height:1.05;text-align:center;overflow:hidden;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.35)}
-    .logo-box img{width:100%;height:100%;object-fit:cover}
-    .brand-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff}
-    .nav-links{display:flex;gap:20px;list-style:none}
-    .nav-links a{color:#fff;text-decoration:none;font-size:.9rem;font-weight:500}
-    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
-    .hero{max-width:1100px;margin:0 auto;padding:42px 22px 65px;color:#fff}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,208,17,.15);border:1px solid var(--yellow);color:var(--yellow);padding:6px 15px;border-radius:50px;font-size:.76rem;font-weight:600;margin-bottom:20px}
-    .dot{width:9px;height:9px;border-radius:50%;background:var(--yellow)}
-    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.12;margin-bottom:18px;max-width:720px}
+    body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+    header{background:var(--dark);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--yellow);position:sticky;top:0;z-index:100}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+    .brand img{width:42px;height:42px;border-radius:50%;border:2px solid var(--yellow);object-fit:cover}
+    .brand span{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700}
+    .menu-btn{background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
+    .nav{display:none;position:absolute;top:68px;left:0;width:100%;background:var(--dark);flex-direction:column;padding:18px;gap:14px;border-bottom:3px solid var(--yellow)}
+    .nav.open{display:flex}
+    .nav a{color:#fff;text-decoration:none;font-weight:500}
+    /* HERO CON COLLAGE */
+    .hero{background:var(--dark);background-image:radial-gradient(#2c2817 1.5px,transparent 1.5px);background-size:32px 32px;padding:34px 20px 55px;color:#fff}
+    .hero-in{max-width:1050px;margin:0 auto}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,208,17,.14);border:1px solid var(--yellow);color:var(--yellow);padding:6px 14px;border-radius:50px;font-size:.75rem;font-weight:700;margin-bottom:18px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.12;margin-bottom:16px}
     .hero h1 span{color:var(--yellow);border-bottom:4px solid var(--yellow)}
-    .hero p{color:#e6e1d3;font-size:1rem;line-height:1.6;max-width:600px;margin-bottom:26px}
-    .btns{display:flex;flex-wrap:wrap;gap:12px}
-    .btn-y{background:var(--yellow);color:#111;padding:13px 26px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.92rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(245,208,17,.35)}
-    .btn-o{background:rgba(255,255,255,.1);color:#fff;padding:13px 26px;border-radius:50px;font-weight:600;text-decoration:none;font-size:.92rem;border:1.5px solid #fff;cursor:pointer}
-    .sec{max-width:1100px;margin:0 auto;padding:42px 20px}
-    .sec-title{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:6px;color:#181611}
-    .sec-title span{color:#b8860b;border-bottom:3px solid var(--yellow)}
-    .sec-sub{color:#4a4538;font-size:.94rem;margin-bottom:24px}
-    .tabs{display:flex;gap:9px;overflow-x:auto;padding-bottom:10px;margin-bottom:22px}
-    .tab{background:#fff;color:#2b271d;border:1.5px solid #e2d4a7;padding:8px 16px;border-radius:50px;font-size:.86rem;font-weight:600;cursor:pointer;white-space:nowrap}
-    .tab.active{background:var(--yellow);color:#111;border-color:#111}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
-    .card{background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #eadcb3;box-shadow:0 6px 18px rgba(45,35,10,.08);display:flex;flex-direction:column;position:relative}
-    .fav-tag{position:absolute;top:12px;left:12px;background:var(--yellow);color:#111;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-    .cat-tag{position:absolute;top:12px;right:12px;background:rgba(24,22,17,.88);color:var(--yellow);font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:20px}
-    .card img{width:100%;height:205px;object-fit:cover;background:#eee3c3}
-    .card-body{padding:16px;display:flex;flex-direction:column;flex-grow:1}
-    .card-body h3{font-size:1.1rem;margin-bottom:6px;color:#181611}
-    .card-body p{font-size:.84rem;color:#575143;margin-bottom:14px;line-height:1.45}
-    .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-    .price{font-size:1.25rem;font-weight:800;color:#181611}
-    .add-btn{background:var(--yellow);color:#111;border:1.5px solid #181611;padding:8px 15px;border-radius:50px;font-weight:700;font-size:.84rem;cursor:pointer}
-    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-    .box{background:#ffffff;border:1.5px solid #e6d39a;border-radius:18px;padding:22px;box-shadow:0 6px 18px rgba(45,35,10,.07)}
-    .box h3{color:#181611;margin-bottom:10px;font-size:1.2rem}
-    .box ul{list-style:none;color:#3d382c;font-size:.9rem;line-height:1.8}
-    .box a{color:#9a6b00;font-weight:700}
-    .pm-box{background:#fdf8e3;border:1.5px dashed #c99a00;padding:12px;border-radius:12px;margin-top:10px;font-size:.88rem;line-height:1.6;color:#181611}
-    .geo{margin-top:10px;font-size:.82rem;color:#166534;background:#dcfce7;padding:8px 12px;border-radius:8px;font-weight:500}
-    .map{margin-top:14px;border-radius:14px;overflow:hidden;height:210px;border:1px solid #dfd0a5}
-    .float-stack{position:fixed;bottom:20px;right:16px;display:flex;flex-direction:column;gap:12px;z-index:998}
-    .bot-btn{position:relative;width:60px;height:60px;border-radius:50%;background:var(--yellow);border:3px solid #181611;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;font-weight:800;font-size:.54rem;color:#111;line-height:1.1}
-    .notif{position:absolute;top:-5px;right:-4px;background:#e11d48;color:#fff;width:22px;height:22px;border-radius:50%;font-size:.75rem;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
-    .wa-btn{width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);text-decoration:none;font-size:1.75rem}
-    .chat{position:fixed;bottom:16px;right:16px;width:370px;max-width:calc(100vw - 24px);height:600px;max-height:calc(100vh - 32px);background:var(--cream);border-radius:22px;box-shadow:0 15px 40px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;z-index:1000;border:2px solid #181611}
-    .chat.open{display:flex}
-    .chat-head{background:#181611;color:#fff;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--yellow)}
-    .chat-head-l{display:flex;align-items:center;gap:10px}
-    .close-x{background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer}
-    .chat-body{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-    .m-bot{background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-    .m-usr{background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end}
-    .c-card{background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-    .c-card-l{display:flex;align-items:center;gap:8px}
-    .c-card img{width:46px;height:46px;border-radius:8px;object-fit:cover}
-    .c-card h5{font-size:.82rem;color:#111}
-    .c-card span{font-size:.84rem;font-weight:700;color:#1e40af}
-    .chips{display:flex;flex-wrap:wrap;gap:6px;padding:6px 12px 10px;background:var(--cream)}
-    .chip{background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5px 11px;border-radius:50px;font-size:.76rem;font-weight:600;cursor:pointer}
-    .cart-bar{background:var(--navy);color:#fff;padding:8px 14px;font-size:.8rem;display:none;justify-content:space-between;align-items:center}
-    .cart-bar button{background:var(--yellow);color:#111;border:none;padding:4px 10px;border-radius:12px;font-weight:700;font-size:.75rem;cursor:pointer}
-    .chat-foot{background:#fff;padding:10px;border-top:1px solid rgba(0,0,0,.08)}
-    .in-row{display:flex;gap:8px}
-    .in-row input{flex:1;background:#efece0;border:none;padding:10px 15px;border-radius:50px;font-size:.85rem;outline:none}
-    .send{width:40px;height:40px;border-radius:50%;background:var(--yellow);border:none;font-weight:700;cursor:pointer}
-    .disc{text-align:center;font-size:.7rem;color:#555;margin-top:6px}
-    @media(max-width:768px){.nav-links{display:none;position:absolute;top:68px;left:0;width:100%;background:#181611;flex-direction:column;padding:20px}.nav-links.active{display:flex}.menu-toggle{display:block}}
+    .hero p{color:#dcd7c8;font-size:.98rem;line-height:1.6;margin-bottom:24px;max-width:580px}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+    .btn-y{background:var(--yellow);color:#111;padding:13px 26px;border-radius:50px;font-weight:700;text-decoration:none;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .btn-o{background:rgba(255,255,255,.08);color:#fff;padding:13px 26px;border-radius:50px;font-weight:600;text-decoration:none;border:1.5px solid #fff}
+    .collage{position:relative;max-width:440px;margin:10px auto 0;height:360px}
+    .c-logo{position:absolute;top:8px;left:6px;width:96px;height:96px;border-radius:50%;border:3px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.45);z-index:3;object-fit:cover}
+    .c-main{position:absolute;top:0;right:0;width:72%;height:260px;border-radius:24px;border:3px solid var(--yellow);object-fit:cover;transform:rotate(2deg);box-shadow:0 12px 28px rgba(0,0,0,.5)}
+    .c-sub{position:absolute;bottom:16px;left:0;width:54%;height:195px;border-radius:22px;border:3px solid #fff;object-fit:cover;transform:rotate(-2deg);box-shadow:0 12px 28px rgba(0,0,0,.5);z-index:2}
+    .c-tag{position:absolute;bottom:6px;right:8px;background:#fff;color:var(--dark);padding:12px 16px;border-radius:18px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 25px rgba(0,0,0,.35);z-index:4}
+    .c-ico{background:var(--yellow);width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+    .marquee{background:var(--yellow);color:#111;padding:12px 0;font-weight:800;font-size:1rem;overflow:hidden;white-space:nowrap;border-top:2px solid #111;border-bottom:2px solid #111}
+    .marquee span{display:inline-block;padding-left:100%;animation:marq 18s linear infinite}
+    @keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    /* SECCIONES */
+    .sec{max-width:1050px;margin:0 auto;padding:48px 20px}
+    .kicker{text-align:center;color:#9a7200;font-size:.76rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+    .title{font-family:'Playfair Display',serif;font-size:2.1rem;text-align:center;color:var(--dark);margin-bottom:8px}
+    .diamonds{display:flex;justify-content:center;gap:6px;margin-bottom:14px}
+    .diamonds i{width:9px;height:9px;transform:rotate(45deg);display:inline-block}
+    .sub{text-align:center;color:#575143;font-size:.94rem;max-width:560px;margin:0 auto 28px;line-height:1.55}
+    /* FAVORITOS 2 COLUMNAS CON FOTO DE FONDO */
+    .fav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .fav-card{position:relative;height:225px;border-radius:20px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.14);cursor:pointer}
+    .fav-card img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+    .fav-card:hover img{transform:scale(1.05)}
+    .fav-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 35%,rgba(0,0,0,.86) 100%);padding:14px;display:flex;flex-direction:column;justify-content:space-between}
+    .pill-top{align-self:flex-start;background:var(--red);color:#fff;font-size:.66rem;font-weight:800;padding:4px 10px;border-radius:50px;text-transform:uppercase}
+    .fav-info h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;line-height:1.15;margin-bottom:8px}
+    .price-pill{display:inline-block;background:var(--yellow);color:#111;font-weight:800;font-size:.88rem;padding:4px 12px;border-radius:50px}
+    /* CARTA CON LÍNEA DE PUNTOS */
+    .tabs-box{background:var(--card);padding:14px;border-radius:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:28px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+    .tab{background:transparent;border:none;padding:8px 16px;border-radius:50px;font-weight:700;font-size:.86rem;color:var(--dark);cursor:pointer}
+    .tab.active{background:var(--navy);color:#fff}
+    .cat-head{font-family:'Playfair Display',serif;font-size:1.75rem;margin:26px 0 14px;display:flex;align-items:center;gap:12px}
+    .cat-head::after{content:'';flex:1;height:1.5px;background:#dfd4b2}
+    .menu-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+    .m-item{background:var(--card);border-radius:18px;padding:16px;border:1px solid #eadfb9;display:flex;gap:12px;align-items:center}
+    .m-thumb{width:76px;height:76px;border-radius:14px;object-fit:cover;flex-shrink:0}
+    .m-body{flex:1}
+    .m-row{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}
+    .m-row h4{font-size:1rem;font-weight:700}
+    .dots{flex:1;border-bottom:2px dotted #cfc29c}
+    .m-price{font-weight:800;color:#1e40af;font-size:1.05rem}
+    .m-desc{font-size:.8rem;color:#5c5546;line-height:1.4;margin-bottom:10px}
+    .m-add{background:var(--yellow);color:#111;border:none;padding:6px 14px;border-radius:50px;font-weight:700;font-size:.8rem;cursor:pointer}
   </style>
 </head>
 <body>
-  <div class="top-bar">Pedidos, delivery y consultas por llamada o WhatsApp:<br><a href="https://wa.me" target="_blank">(0422) 100-9540</a></div>
   <header>
-    <a href="#" class="brand">
-      <div class="logo-box"><img src="Logo.JPG" alt="Logo" onerror="this.style.display='none';this.parentElement.innerHTML='☀️<br>TU PUNTO<br>INCA'"></div>
-      <span class="brand-name">Tu Punto Inca</span>
-    </a>
-    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#favoritos">Favoritos</a></li>
-      <li><a href="#carta">Carta Completa</a></li>
-      <li><a href="#ubicacion">Ubicación y Pagos</a></li>
-      <li><a href="javascript:void(0)" onclick="openChat()">Asistente Inca</a></li>
-    </ul>
+    <a href="#" class="brand"><img src="Logo.JPG" alt="Logo"><span>Tu Punto Inca</span></a>
+    <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#favoritos" onclick="this.parentElement.classList.remove('open')">Favoritos</a>
+      <a href="#carta" onclick="this.parentElement.classList.remove('open')">Menú Completo</a>
+      <a href="#visitanos" onclick="this.parentElement.classList.remove('open')">Ubicación y Horario</a>
+      <a href="#dudas" onclick="this.parentElement.classList.remove('open')">Preguntas Frecuentes</a>
+    </nav>
   </header>
 
   <section class="hero">
-    <div class="badge"><span class="dot"></span><span>ABIERTO AHORA • HASTA LAS 7 PM</span></div>
-    <h1>El auténtico sabor del <span>Perú</span>, aquí en tu punto.</h1>
-    <p>Ceviches frescos de corvina, pollo a la leña de algarrobo, lomo saltado y tallarines con todo el sazón criollo. Ven a disfrutarlo o pídelo a domicilio.</p>
-    <div class="btns"><a href="#carta" class="btn-y">Ver el menú</a><a href="#ubicacion" class="btn-o">Delivery y pagos</a></div>
+    <div class="hero-in">
+      <div class="badge">● ABIERTO MIÉRCOLES A DOMINGO • 12 PM A 7 PM</div>
+      <h1>El auténtico sabor del <span>Perú</span>, aquí en tu punto.</h1>
+      <p>Ceviches frescos de corvina, pollo a la leña de algarrobo, lomo saltado y tallarines con todo el sazón criollo. Ven a disfrutarlo o pídelo a domicilio.</p>
+      <div class="hero-btns">
+        <a href="#carta" class="btn-y">Ver el menú</a>
+        <a href="#consultas" class="btn-o">Delivery y pagos</a>
+      </div>
+      <div class="collage">
+        <img src="Logo.JPG" class="c-logo" alt="Logo">
+        <img src="Leche-tigre.jpeg.JPG" class="c-main" alt="Leche de tigre">
+        <img src="Tallarín-huancaina.jpeg.JPG" class="c-sub" alt="Tallarín huancaína">
+        <div class="c-tag"><div class="c-ico">🐟</div><div><strong>Ceviche peruano</strong><br><span style="font-size:.82rem;color:#555">desde $6</span></div></div>
+      </div>
+    </div>
   </section>
 
+  <div class="marquee"><span>✦ Ceviche peruano ✦ Leche de tigre ✦ Ají de gallina ✦ Pollo a la leña ✦ Lomo saltado ✦ Trío Marino ✦ Tallarines a la huancaína ✦</span></div>
+
   <section class="sec" id="favoritos">
-    <h2 class="sec-title">Los <span>Favoritos</span> de la Casa</h2>
-    <p class="sec-sub">Nuestros platos estrella preparados al momento.</p>
-    <div class="grid" id="favGrid"></div>
+    <div class="kicker">LO MÁS PEDIDO</div>
+    <h2 class="title">Nuestros favoritos</h2>
+    <div class="diamonds"><i style="background:#d97706"></i><i style="background:var(--yellow)"></i><i style="background:#1d4ed8"></i></div>
+    <p class="sub">Los platos que nos piden una y otra vez. Toca cualquiera para agregarlo a tu pedido.</p>
+    <div class="fav-grid" id="favGrid"></div>
   </section>
 
   <section class="sec" id="carta">
-    <h2 class="sec-title">Nuestra <span>Carta</span></h2>
-    <p class="sec-sub">Filtra por categoría o agrega platos directamente a tu pedido.</p>
-    <div class="tabs">
-      <button class="tab active" onclick="filterMenu('todos',this)">Todos</button>
-      <button class="tab" onclick="filterMenu('Entradas',this)">🥟 Entradas</button>
-      <button class="tab" onclick="filterMenu('Del Mar',this)">🐟 Del Mar</button>
-      <button class="tab" onclick="filterMenu('Pollos a la leña',this)">🍗 Pollos a la leña</button>
-      <button class="tab" onclick="filterMenu('Criollos',this)">🥘 Criollos</button>
-      <button class="tab" onclick="filterMenu('Pastas',this)">🍝 Pastas</button>
+    <div class="kicker">NUESTRA CARTA</div>
+    <h2 class="title">Menú completo</h2>
+    <div class="diamonds"><i style="background:#d97706"></i><i style="background:var(--yellow)"></i><i style="background:#1d4ed8"></i></div>
+    <p class="sub">Arma tu pedido aquí mismo y envíalo por WhatsApp con un toque.</p>
+    <div class="tabs-box">
+      <button class="tab active" onclick="renderMenu('Todo',this)">Todo</button>
+      <button class="tab" onclick="renderMenu('Entradas',this)">Entradas</button>
+      <button class="tab" onclick="renderMenu('Del Mar',this)">Del Mar</button>
+      <button class="tab" onclick="renderMenu('Pollos a la leña',this)">Pollos a la leña</button>
+      <button class="tab" onclick="renderMenu('Criollos',this)">Criollos</button>
+      <button class="tab" onclick="renderMenu('Pastas',this)">Pastas</button>
     </div>
-    <div class="grid" id="fullGrid"></div>
+    <div id="menuContainer"></div>
   </section>
 
-  <section class="sec" id="ubicacion">
-    <h2 class="sec-title">Ubicación, <span>Delivery</span> y Pagos</h2>
-    <p class="sec-sub">Visítanos en nuestro local o pide con envío rápido hasta tu puerta.</p>
-    <div class="info-grid">
-      <div class="box">
-        <h3>📍 Dirección y Horario</h3>
-        <ul>
-          <li><strong>Local:</strong> Tu Punto Inca (Cabudare / Barquisimeto)</li>
-          <li><strong>Horario:</strong> Lunes a Domingo hasta las 7:00 PM</li>
-          <li><strong>WhatsApp:</strong> <a href="https://whatsapp.com" target="_blank">(0422) 100-9540</a></li>
-        </ul>
-        <div class="geo" id="geoSt">📡 Activa tu ubicación para adjuntar tu pin GPS al pedido.</div>
-        <button class="btn-y" style="margin-top:10px;padding:8px 16px;font-size:.8rem" onclick="getGPS()">📍 Compartir mi ubicación actual</button>
-        <div class="map"><iframe id="mapFr" width="100%" height="100%" style="border:0" loading="lazy" src="https://google.com"></iframe></div>
+  <section class="sec" id="consultas">
+    <div class="kicker">CONSULTAS · DELIVERY · PAGOS</div>
+    <h2 class="title">¿Antojo de algo peruano?</h2>
+    <div class="diamonds"><i style="background:#d97706"></i><i style="background:var(--yellow)"></i><i style="background:#1d4ed8"></i></div>
+    <p class="sub">Escríbenos por WhatsApp o llámanos al mismo número para consultas, reservas y pedidos a domicilio.</p>
+
+    <div style="background:linear-gradient(145deg,#181a15,#16271c);color:#fff;border-radius:26px;padding:28px 22px;margin-bottom:22px;box-shadow:0 12px 30px rgba(0,0,0,.18)">
+      <div style="color:var(--yellow);font-size:.75rem;font-weight:800;letter-spacing:1.2px;margin-bottom:6px">NÚMERO DE CONSULTAS</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,6vw,2.7rem);font-weight:800;margin-bottom:14px">(0422) 100-9540</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px">
+        <span style="background:rgba(255,255,255,.1);padding:5px 12px;border-radius:50px;font-size:.8rem">🟢 WhatsApp</span>
+        <span style="background:rgba(255,255,255,.1);padding:5px 12px;border-radius:50px;font-size:.8rem">📞 Llamadas</span>
+        <span style="background:rgba(255,255,255,.1);padding:5px 12px;border-radius:50px;font-size:.8rem">🛵 Delivery</span>
       </div>
-      <div class="box">
-        <h3>💳 Métodos de Pago y Delivery</h3>
-        <ul><li>✅ <strong>Pago Móvil:</strong></li></ul>
-        <div class="pm-box"><strong>Cédula:</strong> 25.433.809<br><strong>Teléfono:</strong> 0422-1009540<br><strong>Banco:</strong> 0102 (Banco de Venezuela)</div>
-        <ul style="margin-top:10px"><li>✅ <strong>Zelle y Efectivo Divisas</strong></li><li>✅ <strong>Punto de Venta</strong> en el local</li></ul>
-        <br><button class="btn-y" onclick="openChat()">💬 Hacer pedido con Asistente Inca</button>
+      <p style="color:#d6d3c9;font-size:.9rem;margin-bottom:20px">Pregúntanos por el menú, haz tu pedido para llevar o pide delivery a domicilio.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="https://whatsapp.com" target="_blank" style="background:var(--green);color:#fff;padding:13px 22px;border-radius:50px;font-weight:700;text-decoration:none">💬 Escribir por WhatsApp</a>
+        <a href="tel:+584221009540" class="btn-y">📞 Llamar</a>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:20px">
+      <div style="background:var(--card);padding:22px;border-radius:22px;border:1px solid #eadfb9">
+        <div style="background:var(--yellow);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:12px">🍽️</div>
+        <h3 style="font-size:1.1rem;margin-bottom:6px">1. Arma tu pedido</h3>
+        <p style="font-size:.86rem;color:#575143">Selecciona los platos que te provoquen en el menú o con el Asistente Inca.</p>
+      </div>
+      <div style="background:var(--card);padding:22px;border-radius:22px;border:1px solid #eadfb9">
+        <div style="background:var(--yellow);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:12px">💬</div>
+        <h3 style="font-size:1.1rem;margin-bottom:6px">2. Envía por WhatsApp</h3>
+        <p style="font-size:.86rem;color:#575143">El mensaje con tu pedido y el total se arma solo.</p>
+      </div>
+      <div style="background:var(--card);padding:22px;border-radius:22px;border:1px solid #eadfb9">
+        <div style="background:var(--yellow);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:12px">🛵</div>
+        <h3 style="font-size:1.1rem;margin-bottom:6px">3. Paga y disfruta</h3>
+        <p style="font-size:.86rem;color:#575143">Pago Móvil (CI: 25.433.809 · Tlf: 0422-1009540 · Banco Venezuela 0102), Zelle o efectivo.</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#fce7f3,#f3e8ff);padding:24px;border-radius:24px;border:1px solid #f5d0fe">
+      <h3 style="font-size:1.2rem;margin-bottom:6px">📸 Síguenos en redes</h3>
+      <p style="font-size:.88rem;color:#4b5563;margin-bottom:16px">Fotos, videos de los platos, novedades y promociones.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="https://instagram.com" target="_blank" style="background:linear-gradient(45deg,#f59e0b,#db2777,#7c3aed);color:#fff;padding:11px 20px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.88rem">📷 @tupuntoincabqto</a>
+        <a href="https://tiktok.com" target="_blank" style="background:#111;color:#fff;padding:11px 20px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.88rem">🎵 @tupuntoincabudare</a>
       </div>
     </div>
   </section>
 
-  <div class="float-stack">
-    <button class="bot-btn" onclick="openChat()">☀️<br>TU PUNTO<br>INCA<span class="notif" id="nBadge">1</span></button>
-    <a href="https://wa.me?text=Hola%20Tu%20Punto%20Inca" target="_blank" class="wa-btn">✆</a>
+  <section class="sec" id="visitanos">
+    <div class="kicker">VISÍTANOS</div>
+    <h2 class="title">Dónde y cuándo encontrarnos</h2>
+    <div class="diamonds"><i style="background:#d97706"></i><i style="background:var(--yellow)"></i><i style="background:#1d4ed8"></i></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:22px">
+      <div style="background:var(--card);padding:24px;border-radius:22px;border:1px solid #eadfb9">
+        <div style="background:var(--yellow);width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">📍</div>
+        <h3 style="font-size:1.2rem;margin-bottom:6px">Dirección</h3>
+        <p style="color:#4a4538;font-size:.94rem;margin-bottom:12px">Av. El Placer, Valle Hondo, Cabudare, estado Lara</p>
+        <a href="#mapaBox" style="color:var(--navy);font-weight:700;text-decoration:none">Ver mapa ↓</a>
+      </div>
+      <div style="background:var(--card);padding:24px;border-radius:22px;border:1px solid #eadfb9">
+        <div style="background:var(--yellow);width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">🕒</div>
+        <h3 style="font-size:1.2rem;margin-bottom:6px">Horario</h3>
+        <p style="color:#4a4538;font-size:.94rem">Miércoles a domingo<br><strong>12:00 pm a 7:00 pm</strong><br><span style="font-size:.82rem;color:#78716c">Lunes y martes: cerrado</span></p>
+      </div>
+    </div>
+
+    <div id="mapaBox" style="background:var(--dark);color:#fff;border-radius:26px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.18)">
+      <div style="padding:26px 22px">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:8px">📍 Cómo llegar</h3>
+        <p style="color:#dcd7c8;font-size:.95rem;margin-bottom:6px">Av. El Placer, Valle Hondo<br>Cabudare, estado Lara</p>
+        <p style="color:var(--yellow);font-weight:700;font-size:.88rem;margin-bottom:18px">Miércoles a domingo · 12 pm a 7 pm</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+Abrir en Google Maps
+💬 Pedir indicaciones
+                </div>
+      <iframe width="100%" height="250" style="border:0;display:block" loading="lazy" src="https://google.com"></iframe>
+    </div>
+  </section>
+
+  <section class="sec" id="dudas">
+    <div class="kicker">PREGUNTAS FRECUENTES</div>
+    <h2 class="title">¿Tienes dudas?</h2>
+    <div class="diamonds"><i style="background:#d97706"></i><i style="background:var(--yellow)"></i><i style="background:#1d4ed8"></i></div>
+    <div id="faqList" style="display:flex;flex-direction:column;gap:12px;max-width:750px;margin:0 auto"></div>
+  </section>
+<div style="position:fixed;bottom:18px;left:16px;z-index:990">
+    <a href="#" style="width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.3)">↑</a>
   </div>
 
-  <div class="chat" id="chatWin">
-    <div class="chat-head">
-      <div class="chat-head-l"><div class="logo-box" style="width:36px;height:36px"><img src="Logo.JPG"></div><div><h4>Asistente Inca</h4><p style="font-size:.75rem;color:#d4d2c9">🟢 En línea · Listo para ayudarte</p></div></div>
-      <button class="bot-btn" onclick="openChat()" style="padding:0"><img src="Logo.JPG" style="width:100%;height:100%;object-fit:cover;border-radius:50%"><span class="notif" id="nBadge">1</span></button>
+  <div style="position:fixed;bottom:18px;right:16px;display:flex;flex-direction:column;align-items:center;gap:12px;z-index:998">
+    <button onclick="openChat()" style="position:relative;width:58px;height:58px;border-radius:50%;background:var(--yellow);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.35);cursor:pointer;padding:0">
+      <img src="Logo.JPG" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+      <span id="nBadge" style="position:absolute;top:-5px;right:-4px;background:var(--red);color:#fff;width:21px;height:21px;border-radius:50%;font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff">1</span>
+    </button>
+    <a href="https://api.whatsapp.com/send?phone=584221009540&text=Hola%20Tu%20Punto%20Inca,%20quisiera%20hacer%20un%20pedido" target="_blank" style="width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.35);text-decoration:none;font-size:1.7rem">💬</a>
+  </div>
+
+  <div id="chatWin" style="position:fixed;bottom:16px;right:16px;width:370px;max-width:calc(100vw - 24px);height:590px;max-height:calc(100vh - 32px);background:#fbf8e8;border-radius:22px;box-shadow:0 15px 40px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;z-index:1000;border:2px solid var(--dark)">
+    <div style="background:var(--dark);color:#fff;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--yellow)">
+      <div style="display:flex;align-items:center;gap:10px"><img src="Logo.JPG" style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--yellow)"><div><h4 style="font-size:1rem">Asistente Inca</h4><p style="font-size:.74rem;color:#d4d2c9">🟢 En línea · Listo para ayudarte</p></div></div>
+      <button onclick="document.getElementById('chatWin').style.display='none'" style="background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer">✕</button>
     </div>
-    <div class="cart-bar" id="cartBar"><span id="cartTxt">🛒 0 platos ($0)</span><button onclick="sendWA()">Enviar Pedido 📲</button></div>
-    <div class="chat-body" id="cBody"></div>
-    <div class="chips" id="cChips"></div>
-    <div class="chat-foot">
-      <div class="in-row"><input type="text" id="cIn" placeholder="Escribe tu pregunta o pedido..." onkeypress="if(event.key==='Enter')sendUsr()"><button class="send" onclick="sendUsr()">➤</button></div>
-      <div class="disc">Asistente automático · Atención personal: <strong>(0422) 100-9540</strong></div>
+    <div id="cartBar" style="background:var(--navy);color:#fff;padding:8px 14px;font-size:.8rem;display:none;justify-content:space-between;align-items:center">
+      <span id="cartTxt">🛒 0 platos ($0)</span>
+      <button onclick="sendWA()" style="background:var(--yellow);color:#111;border:none;padding:4px 10px;border-radius:12px;font-weight:700;font-size:.75rem;cursor:pointer">Enviar Pedido 📲</button>
+    </div>
+    <div id="cBody" style="flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px"></div>
+    <div id="cChips" style="display:flex;flex-wrap:wrap;gap:6px;padding:6px 12px 10px"></div>
+    <div style="background:#fff;padding:10px;border-top:1px solid #e5e0cf">
+      <div style="display:flex;gap:8px"><input id="cIn" placeholder="Escribe tu pregunta o pedido..." onkeypress="if(event.key==='Enter')sendUsr()" style="flex:1;background:#efece0;border:none;padding:10px 15px;border-radius:50px;font-size:.85rem;outline:none"><button onclick="sendUsr()" style="width:40px;height:40px;border-radius:50%;background:var(--yellow);border:none;font-weight:700;cursor:pointer">➤</button></div>
+      <div style="text-align:center;font-size:.7rem;color:#555;margin-top:6px">Asistente automático · Atención personal: <strong>(0422) 100-9540</strong></div>
     </div>
   </div>
+
   <script>
     const menu=[
-      {id:1,name:"Papas a la Huancaína",cat:"Entradas",price:5,fav:false,desc:"Rodajas de papa bañadas en cremosa salsa de ají amarillo y queso.",img:"https://unsplash.com"},
-      {id:2,name:"Tequeños",cat:"Entradas",price:6,fav:false,desc:"Crujientes tequeños dorados rellenos de queso blanco con salsa de la casa.",img:"https://unsplash.com"},
-      {id:3,name:"Causa Limeña",cat:"Entradas",price:7,fav:false,desc:"Masa de papa amarilla sazonada con limón y ají amarillo rellena con pollo.",img:"https://unsplash.com"},
-      {id:4,name:"Ceviche peruano",cat:"Del Mar",price:6,fav:true,desc:"Pescado blanco marinado con limón criollo, cebolla morada, camote, yuca frita y chifles.",img:"Ceviche.jpeg.JPG"},
-      {id:5,name:"Leche de tigre",cat:"Del Mar",price:7,fav:true,desc:"Concentrado cítrico con trozos de pescado, chicharrón de pescado y camote.",img:"Leche-tigre.jpeg.JPG"},
-      {id:6,name:"Ceviche para compartir",cat:"Del Mar",price:10,fav:false,desc:"350grm de corvina fresca con yuca frita, tostones, camote y cebolla morada.",img:"Ceviche.jpeg.JPG"},
-      {id:7,name:"Dúo Marino",cat:"Del Mar",price:8,fav:false,desc:"Porción de ceviche, camote, chifles, yuca frita más arroz con mariscos.",img:"Trío-marino.jpeg.JPG"},
-      {id:8,name:"Trío Marino",cat:"Del Mar",price:12,fav:true,desc:"Ceviche, camote, yuca frita, chifles, arroz con mariscos y chicharrón de pescado.",img:"Trío-marino.jpeg.JPG"},
-      {id:9,name:"Pollo a la leña",cat:"Pollos a la leña",price:20,fav:false,desc:"1 pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"https://unsplash.com"},
-      {id:10,name:"1/2 Pollo a la leña",cat:"Pollos a la leña",price:10.5,fav:false,desc:"Medio pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"https://unsplash.com"},
-      {id:11,name:"1/4 Pollo a la leña",cat:"Pollos a la leña",price:5,fav:false,desc:"Cuarto de pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"https://unsplash.com"},
-      {id:12,name:"Mostro",cat:"Pollos a la leña",price:7,fav:true,desc:"Pollo asado con leña de algarrobo, papas fritas, arroz chaufa y ensalada.",img:"Mostrito.jpeg.JPG"},
-      {id:13,name:"Ají de gallina",cat:"Criollos",price:8,fav:false,desc:"Pollo deshilachado en cremosa salsa de ají amarillo, arroz, papa y aceituna.",img:"https://unsplash.com"},
-      {id:14,name:"Arroz chaufa",cat:"Criollos",price:3.5,fav:true,desc:"Arroz frito salteado con trozos de pollo, huevo frito, especies y cebolla china.",img:"Chaufa.jpeg.JPG"},
-      {id:15,name:"Pollo saltado",cat:"Criollos",price:6,fav:false,desc:"180grm de pechuga de pollo salteada al wok con tomate, cebolla, arroz y papas fritas.",img:"https://unsplash.com"},
-      {id:16,name:"Lomo saltado",cat:"Criollos",price:7,fav:false,desc:"180grm de lomo de res salteado y flameado con tomate, cebolla, arroz y papas fritas.",img:"https://unsplash.com"},
-      {id:17,name:"Mostrito",cat:"Criollos",price:5,fav:false,desc:"Arroz chaufa, 1/8 pollo broaster, ensalada fresca y papas fritas naturales.",img:"Mostrito.jpeg.JPG"},
-      {id:18,name:"Alitas BBQ",cat:"Criollos",price:5,fav:false,desc:"4 alitas en salsa bbq con arroz chaufa, papas fritas y ensalada.",img:"https://unsplash.com"},
-      {id:19,name:"Anticuchos",cat:"Criollos",price:6,fav:false,desc:"3 palos de anticuchos acompañados con papas a la huancaína, ensalada y cremas.",img:"https://unsplash.com"},
-      {id:20,name:"Tallarines saltado de carne o pollo",cat:"Pastas",price:7,fav:true,desc:"Tallarines salteados al wok con 180g de carne o pollo, cebolla, tomate y sillao.",img:"Tallarín-saltado.jpeg.JPG"},
-      {id:21,name:"Tallarines a la huancaína",cat:"Pastas",price:10,fav:true,desc:"Pasta con salsa de ají amarillo y queso acompañada con lomo saltado.",img:"Tallarín-huancaina.jpeg.JPG"},
-      {id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:true,desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
+      {id:1,name:"Papas a la Huancaína",cat:"Entradas",price:5,fav:false,tag:"",desc:"Papas bañadas en cremosa salsa de ají amarillo y queso.",img:"Logo.JPG"},
+      {id:2,name:"Tequeños",cat:"Entradas",price:6,fav:false,tag:"",desc:"Crujientes tequeños dorados rellenos de queso blanco con salsa de la casa.",img:"Logo.JPG"},
+      {id:3,name:"Causa Limeña",cat:"Entradas",price:7,fav:false,tag:"",desc:"Masa de papa amarilla sazonada con limón y ají amarillo rellena con pollo.",img:"Logo.JPG"},
+      {id:4,name:"Ceviche peruano",cat:"Del Mar",price:6,fav:true,tag:"TOP",desc:"Pescado blanco marinado con limón criollo, cebolla morada, camote, yuca frita y chifles.",img:"Ceviche.jpeg.JPG"},
+      {id:5,name:"Leche de tigre",cat:"Del Mar",price:7,fav:true,tag:"NUEVO",desc:"Concentrado cítrico con trozos de pescado, chicharrón de pescado y camote.",img:"Leche-tigre.jpeg.JPG"},
+      {id:6,name:"Ceviche para compartir",cat:"Del Mar",price:10,fav:false,tag:"",desc:"350grm de corvina fresca con yuca frita, tostones, camote y cebolla morada.",img:"Ceviche.jpeg.JPG"},
+      {id:7,name:"Dúo Marino",cat:"Del Mar",price:8,fav:false,tag:"",desc:"Porción de ceviche, camote, chifles, yuca frita más arroz con mariscos.",img:"Trío-marino.jpeg.JPG"},
+      {id:8,name:"Trío Marino",cat:"Del Mar",price:12,fav:true,tag:"PARA COMPARTIR",desc:"Ceviche, camote, yuca frita, chifles, arroz con mariscos y chicharrón de pescado.",img:"Trío-marino.jpeg.JPG"},
+      {id:9,name:"Pollo a la leña",cat:"Pollos a la leña",price:20,fav:false,tag:"",desc:"1 pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"Logo.JPG"},
+      {id:10,name:"1/2 Pollo a la leña",cat:"Pollos a la leña",price:10.5,fav:false,tag:"",desc:"Medio pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"Logo.JPG"},
+      {id:11,name:"1/4 Pollo a la leña",cat:"Pollos a la leña",price:5,fav:false,tag:"",desc:"Cuarto de pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"Logo.JPG"},
+      {id:12,name:"Mostro",cat:"Pollos a la leña",price:7,fav:false,tag:"",desc:"Pollo asado con leña de algarrobo, papas fritas, arroz chaufa y ensalada.",img:"Mostrito.jpeg.JPG"},
+      {id:13,name:"Ají de gallina",cat:"Criollos",price:8,fav:false,tag:"",desc:"Pollo deshilachado en cremosa salsa de ají amarillo, arroz, papa y aceituna.",img:"Logo.JPG"},
+      {id:14,name:"Arroz chaufa",cat:"Criollos",price:3.5,fav:false,tag:"",desc:"Arroz frito salteado con trozos de pollo, huevo frito, especies y cebolla china.",img:"Chaufa.jpeg.JPG"},
+      {id:15,name:"Pollo saltado",cat:"Criollos",price:6,fav:false,tag:"",desc:"180grm de pechuga de pollo salteada al wok con tomate, cebolla, arroz y papas fritas.",img:"Logo.JPG"},
+      {id:16,name:"Lomo saltado",cat:"Criollos",price:7,fav:false,tag:"",desc:"180grm de lomo de res salteado y flameado con tomate, cebolla, arroz y papas fritas.",img:"Logo.JPG"},
+      {id:17,name:"Mostrito",cat:"Criollos",price:5,fav:false,tag:"",desc:"Arroz chaufa, 1/8 pollo broaster, ensalada fresca y papas fritas naturales.",img:"Mostrito.jpeg.JPG"},
+      {id:18,name:"Alitas BBQ",cat:"Criollos",price:5,fav:false,tag:"",desc:"4 alitas en salsa bbq con arroz chaufa, papas fritas y ensalada.",img:"Logo.JPG"},
+      {id:19,name:"Anticuchos",cat:"Criollos",price:6,fav:false,tag:"",desc:"3 palos de anticuchos acompañados con papas a la huancaína, ensalada y cremas.",img:"Logo.JPG"},
+      {id:20,name:"Tallarines saltado",cat:"Pastas",price:7,fav:false,tag:"",desc:"Tallarines salteados al wok con 180g de carne o pollo, cebolla, tomate y sillao.",img:"Tallarín-saltado.jpeg.JPG"},
+      {id:21,name:"Huancaína con lomo",cat:"Pastas",price:10,fav:true,tag:"ESPECIAL",desc:"Tallarines a la huancaína acompañados con jugoso lomo saltado al wok.",img:"Tallarín-huancaina.jpeg.JPG"},
+      {id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:false,tag:"",desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
     ];
-        let cart=[],gps="",started=false;
-    const fallbackImg="https://unsplash.com";
-    const cardHTML=(i,f)=>`<div class="card">${f?'<span class="fav-tag">⭐ Favorito</span>':''}<span class="cat-tag">${i.cat}</span><img src="${i.img}" onerror="this.src='${fallbackImg}'"><div class="card-body"><h3>${i.name}</h3><p>${i.desc}</p><div class="card-foot"><span class="price">$${i.price}</span><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div></div></div>`;
-    function render(c="todos"){
-      document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>cardHTML(i,true)).join("");
-      document.getElementById("fullGrid").innerHTML=(c==="todos"?menu:menu.filter(i=>i.cat===c)).map(i=>cardHTML(i,false)).join("");
-    }
-    function filterMenu(c,b){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");render(c)}
-    function getGPS(){
-      const s=document.getElementById("geoSt");
-      if(!navigator.geolocation){s.textContent="⚠️ Sin soporte GPS";return}
-      s.textContent="⏳ Obteniendo ubicación...";
-      navigator.geolocation.getCurrentPosition(p=>{gps=`https://google.com{p.coords.latitude},${p.coords.longitude}`;s.textContent="✅ Ubicación lista para enviar con tu pedido.";document.getElementById("mapFr").src=`https://google.com{p.coords.latitude},${p.coords.longitude}&output=embed`},()=>s.textContent="⚠️ No se pudo acceder al GPS");
-    }
-    function openChat(){
-      document.getElementById("chatWin").classList.add("open");document.getElementById("nBadge").style.display="none";
-      if(!started){bot("¡Hola! 👋 Soy el <strong>Asistente Inca</strong>. Te ayudo con el menú, precios, pago móvil o a <strong>armar tu pedido</strong>.<br>¿Qué se te antoja hoy?");chips(["Ver menú","Recomiéndame algo","Pago Móvil"]);started=true}
-    }
-    function bot(h){const d=document.createElement("div");d.className="m-bot";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
-    function usr(t){const d=document.createElement("div");d.className="m-usr";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
-    function chips(a){document.getElementById("cChips").innerHTML=a.map(x=>`<button class="chip" onclick="pick('${x}')">${x}</button>`).join("")}
-    function pick(o){
-      usr(o);
-      const low=o.toLowerCase();
-      if(low.includes("finalizar")||low.includes("whatsapp")||low.includes("enviar pedido")){
-        bot("📲 Abriendo WhatsApp con tu pedido...");
-        setTimeout(sendWA,300);
-        return;
-      }
-      setTimeout(()=>{
-        if(low.includes("ver menú")||low.includes("seguir viendo")){
-          bot("🍽️ Elige una categoría:");
-          chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"]);
-        }else if(["entradas","del mar","pollos a la leña","criollos","pastas"].includes(low)){
-          const list=menu.filter(i=>i.cat.toLowerCase()===low);
-          bot(`<strong>${o}:</strong>`+list.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}" onerror="this.src='${fallbackImg}'"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
-          chips(["Ver menú","Finalizar pedido"]);
-        }else if(low.includes("recomiéndame")){
-          const f=[menu,menu,menu];
-          bot("⭐ Favoritos de hoy:"+f.map(i=>`<div class="c-card"><div class="c-card-l"><img src="${i.img}" onerror="this.src='${fallbackImg}'"><div><h5>${i.name}</h5><span>$${i.price}</span></div></div><button class="add-btn" onclick="addCart(${i.id})">+ Agregar</button></div>`).join(""));
-          chips(["Ver menú","Pago Móvil"]);
-        }else if(low.includes("pago móvil")){
-          bot("💳 <strong>Pago Móvil:</strong><br>• CI: 25.433.809<br>• Tlf: 0422-1009540<br>• Banco: 0102 (Venezuela)<br>🕒 Hasta las 7:00 PM");
-          chips(["Ver menú","Compartir GPS"]);
-        }else if(low.includes("gps")){
-          getGPS();
-          bot("📡 Solicitando ubicación GPS...");
-        }
-      },200);
-    }
-    function sendUsr(){
-      const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";const l=v.toLowerCase();
-      setTimeout(()=>{
-        if(l.includes("menu")||l.includes("menú")||l.includes("carta"))pick("Ver menú");
-        else if(l.includes("entrada")||l.includes("tequeño")||l.includes("causa"))pick("Entradas");
-        else if(l.includes("ceviche")||l.includes("mar")||l.includes("tigre"))pick("Del Mar");
-        else if(l.includes("pollo")||l.includes("leña")||l.includes("mostro"))pick("Pollos a la leña");
-        else if(l.includes("chaufa")||l.includes("lomo")||l.includes("criollo"))pick("Criollos");
-        else if(l.includes("tallarin")||l.includes("pasta"))pick("Pastas");
-        else if(l.includes("pago")||l.includes("banco"))pick("Pago Móvil");
-        else if(l.includes("pedir")||l.includes("finalizar")||l.includes("whatsapp"))sendWA();
-        else{bot("¡Anotado! Envía tu pedido por WhatsApp al <strong>(0422) 100-9540</strong> o mira el menú:");chips(["Ver menú","Enviar por WhatsApp"])}
-      },200);
-    }
-    function addCart(id){
-      const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
-      const tot=cart.reduce((s,x)=>s+x.price,0);
-      document.getElementById("cartBar").style.display="flex";
-      document.getElementById("cartTxt").textContent=`🛒 ${cart.length} plato(s) ($${tot})`;
-      if(!document.getElementById("chatWin").classList.contains("open"))openChat();
-      setTimeout(()=>{bot(`✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.`);chips(["Seguir viendo menú","Finalizar pedido"])},150);
-    }
-    function sendWA(){
-      let m="Hola *Tu Punto Inca*, mi pedido es:\n\n";
-      if(cart.length){cart.forEach((x,i)=>m+=`${i+1}. ${x.name} - $${x.price}\n`);m+=`\n*Total:* $${cart.reduce((s,x)=>s+x.price,0)}`}
-      else m+="Quisiera hacer una consulta sobre el menú.";
-      if(gps)m+=`\n\n📍 *Mi ubicación:* ${gps}`;
-      window.location.href=`https://whatsapp.com{encodeURIComponent(m)}`;
-    }
-    render();
-  </script>
+    const faqs=[
+      {q:"¿Cómo hago un pedido?",a:"Agrega tus platos en el menú o con el Asistente Inca y presiona Enviar Pedido para abrir WhatsApp con tu orden lista."},
+      {q:"¿Hacen delivery?",a:"Sí, realizamos envíos a domicilio en Cabudare y Barquisimeto. Consúltanos tu zona por WhatsApp al (0422) 100-9540."},
+      {q:"¿Cómo puedo pagar?",a:"Aceptamos Pago Móvil (CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela 0102), Zelle, efectivo divisas y punto de venta."},
+      {q:"¿Qué días y a qué hora abren?",a:"Abrimos de miércoles a domingo de 12:00 pm a 7:00 pm (lunes y martes cerrado)."},
+      {q:"¿Dónde están ubicados?",a:"En la Av. El Placer, Valle Hondo, Cabudare, estado Lara."},
+      {q:"¿El Dúo y Trío Marino traen arroz cremoso o suelto?",a:"Puedes pedir tu arroz con mariscos en textura cremosa o textura suelta según tu gusto."},
+      {q:"¿Puedo elegir la proteína de los tallarines?",a:"Sí, puedes acompañarlos con lomo de res, pechuga de pollo, chuleta, bisteck o anticuchos."}
+    ];
+    let cart=[],started=false;
+    document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>`<div class="fav-card" onclick="addCart(${i.id})"><img src="${i.img}"><div class="fav-grad"><span class="pill-top">${i.tag}</span><div class="fav-info"><h3>${i.name}</h3><span class="price-pill">$${i.price}</span></div></div></div>`).join("");
+    function renderMenu(cat="Todo",btn){
+      if(btn){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active")}
+      const cats=cat==="Todo"?["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"]:[cat];
+document.getElementById("menuContainer").innerHTML=cats.map(c=><h3 class="cat-head">${c}</h3><div class="menu-list">+menu.filter(i=>i.cat===c).map(i=><div class="m-item"><img src="${i.img}" class="m-thumb"><div class="m-body"><div class="m-row"><h4>${i.name}</h4><span class="dots"></span><span class="m-price">$${i.price}</span></div><p class="m-desc">${i.desc}</p><button class="m-add" onclick="addCart(${i.id})">+ Agregar</button></div></div>).join("")+</div>).join("");
+}
+document.getElementById("faqList").innerHTML=faqs.map((f,idx)=><div onclick="const a=document.getElementById('fa${idx}');a.style.display=a.style.display==='block'?'none':'block'" style="background:var(--card);padding:18px 20px;border-radius:18px;border:1px solid #eadfb9;cursor:pointer"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700"><span>${f.q}</span><span style="background:var(--yellow);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">+</span></div><p id="fa${idx}" style="display:none;margin-top:10px;font-size:.88rem;color:#575143;line-height:1.5">${f.a}</p></div>).join("");
+function openChat(){document.getElementById("chatWin").style.display="flex";document.getElementById("nBadge").style.display="none";if(!started){bot("¡Hola! 👋 Soy el Asistente Inca. Te ayudo con el menú, precios, horario, ubicación o a armar tu pedido.
+¿Qué se te antoja hoy?");chips(["Ver menú","Recomiéndame algo","Ubicación y pagos"]);started=true}}
+function bot(h){const d=document.createElement("div");d.style.cssText="background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.07)";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+function usr(t){const d=document.createElement("div");d.style.cssText="background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+function chips(a){document.getElementById("cChips").innerHTML=a.map(x=><button onclick="pick('${x}')" style="background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5px 12px;border-radius:50px;font-size:.76rem;font-weight:600;cursor:pointer">${x}</button>).join("")}
+function pick(o){
+usr(o);const l=o.toLowerCase();
+if(l.includes("finalizar")||l.includes("whatsapp")){bot("📲 Abriendo WhatsApp con tu pedido...");setTimeout(sendWA,250);return}
+setTimeout(()=>{
+if(l.includes("ver menú")||l.includes("seguir")){bot("🍽️ Elige una categoría:");chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"])}
+else if(["entradas","del mar","pollos a la leña","criollos","pastas"].includes(l)){
+bot(<strong>${o}:</strong>+menu.filter(i=>i.cat.toLowerCase()===l).map(i=><div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="${i.img}" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">${i.name}</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$${i.price}</span></div></div><button onclick="addCart(${i.id})" class="m-add">+ Agregar</button></div>).join(""));
+chips(["Ver menú","Finalizar pedido"]);
+}else if(l.includes("recomiéndame")){
+bot("⭐ Nuestros favoritos:"+menu.filter(i=>i.fav).map(i=><div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="${i.img}" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">${i.name}</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$${i.price}</span></div></div><button onclick="addCart(${i.id})" class="m-add">+ Agregar</button></div>).join(""));
+chips(["Ver menú","Ubicación y pagos"]);
+}else if(l.includes("ubicación")){
+bot("📍 Av. El Placer, Valle Hondo, Cabudare.
+🕒 Miércoles a domingo · 12 pm a 7 pm.
+💳 Pago Móvil: CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela (0102).");
+chips(["Ver menú","Finalizar pedido"]);
+}
+},200);
+}
+function sendUsr(){const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";pick(v.toLowerCase().includes("pago")||v.toLowerCase().includes("ubic")?"Ubicación y pagos":"Ver menú")}
+function addCart(id){
+const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
+const tot=cart.reduce((s,x)=>s+x.price,0);
+document.getElementById("cartBar").style.display="flex";
+document.getElementById("cartTxt").textContent=🛒 ${cart.length} plato(s) ($${tot});
+openChat();
+setTimeout(()=>{bot(✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.);chips(["Seguir viendo menú","Finalizar pedido"])},150);
+}
+function sendWA(){
+let m="Hola Tu Punto Inca, mi pedido es:\n\n";
+if(cart.length){cart.forEach((x,i)=>m+=${i+1}. ${x.name} - $${x.price}\n);m+=\n*Total:* $${cart.reduce((s,x)=>s+x.price,0)}}
+else m+="Quisiera hacer una consulta sobre el menú.";
+window.location.href=https://whatsapp.com{encodeURIComponent(m)};
+}
+renderMenu();                                                                                                                                       
+    </script>
 </body>
 </html>
