@@ -17,7 +17,6 @@
     .nav{display:none;position:absolute;top:68px;left:0;width:100%;background:var(--dark);flex-direction:column;padding:18px;gap:14px;border-bottom:3px solid var(--yellow)}
     .nav.open{display:flex}
     .nav a{color:#fff;text-decoration:none;font-weight:500}
-    /* HERO CON COLLAGE */
     .hero{background:var(--dark);background-image:radial-gradient(#2c2817 1.5px,transparent 1.5px);background-size:32px 32px;padding:34px 20px 55px;color:#fff}
     .hero-in{max-width:1050px;margin:0 auto}
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,208,17,.14);border:1px solid var(--yellow);color:var(--yellow);padding:6px 14px;border-radius:50px;font-size:.75rem;font-weight:700;margin-bottom:18px}
@@ -25,34 +24,30 @@
     .hero h1 span{color:var(--yellow);border-bottom:4px solid var(--yellow)}
     .hero p{color:#dcd7c8;font-size:.98rem;line-height:1.6;margin-bottom:24px;max-width:580px}
     .hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
-    .btn-y{background:var(--yellow);color:#111;padding:13px 26px;border-radius:50px;font-weight:700;text-decoration:none;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-    .btn-o{background:rgba(255,255,255,.08);color:#fff;padding:13px 26px;border-radius:50px;font-weight:600;text-decoration:none;border:1.5px solid #fff}
-    .collage{position:relative;max-width:440px;margin:10px auto 0;height:360px}
-    .c-logo{position:absolute;top:8px;left:6px;width:96px;height:96px;border-radius:50%;border:3px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.45);z-index:3;object-fit:cover}
-    .c-main{position:absolute;top:0;right:0;width:72%;height:260px;border-radius:24px;border:3px solid var(--yellow);object-fit:cover;transform:rotate(2deg);box-shadow:0 12px 28px rgba(0,0,0,.5)}
-    .c-sub{position:absolute;bottom:16px;left:0;width:54%;height:195px;border-radius:22px;border:3px solid #fff;object-fit:cover;transform:rotate(-2deg);box-shadow:0 12px 28px rgba(0,0,0,.5);z-index:2}
-    .c-tag{position:absolute;bottom:6px;right:8px;background:#fff;color:var(--dark);padding:12px 16px;border-radius:18px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 25px rgba(0,0,0,.35);z-index:4}
-    .c-ico{background:var(--yellow);width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+    .btn-y{background:var(--yellow);color:#111;padding:13px 24px;border-radius:50px;font-weight:700;text-decoration:none;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .btn-o{background:rgba(255,255,255,.08);color:#fff;padding:13px 24px;border-radius:50px;font-weight:600;text-decoration:none;border:1.5px solid #fff}
+    .collage{position:relative;max-width:420px;margin:10px auto 0;height:350px}
+    .c-logo{position:absolute;top:8px;left:6px;width:92px;height:92px;border-radius:50%;border:3px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.45);z-index:3;object-fit:cover}
+    .c-main{position:absolute;top:0;right:0;width:72%;height:250px;border-radius:24px;border:3px solid var(--yellow);object-fit:cover;transform:rotate(2deg);box-shadow:0 12px 28px rgba(0,0,0,.5)}
+    .c-sub{position:absolute;bottom:16px;left:0;width:54%;height:185px;border-radius:22px;border:3px solid #fff;object-fit:cover;transform:rotate(-2deg);box-shadow:0 12px 28px rgba(0,0,0,.5);z-index:2;background:#222}
+    .c-tag{position:absolute;bottom:6px;right:8px;background:#fff;color:var(--dark);padding:11px 15px;border-radius:18px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 25px rgba(0,0,0,.35);z-index:4}
+    .c-ico{background:var(--yellow);width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
     .marquee{background:var(--yellow);color:#111;padding:12px 0;font-weight:800;font-size:1rem;overflow:hidden;white-space:nowrap;border-top:2px solid #111;border-bottom:2px solid #111}
     .marquee span{display:inline-block;padding-left:100%;animation:marq 18s linear infinite}
     @keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-    /* SECCIONES */
-    .sec{max-width:1050px;margin:0 auto;padding:48px 20px}
+    .sec{max-width:1050px;margin:0 auto;padding:46px 20px}
     .kicker{text-align:center;color:#9a7200;font-size:.76rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
     .title{font-family:'Playfair Display',serif;font-size:2.1rem;text-align:center;color:var(--dark);margin-bottom:8px}
     .diamonds{display:flex;justify-content:center;gap:6px;margin-bottom:14px}
     .diamonds i{width:9px;height:9px;transform:rotate(45deg);display:inline-block}
     .sub{text-align:center;color:#575143;font-size:.94rem;max-width:560px;margin:0 auto 28px;line-height:1.55}
-    /* FAVORITOS 2 COLUMNAS CON FOTO DE FONDO */
     .fav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .fav-card{position:relative;height:225px;border-radius:20px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.14);cursor:pointer}
-    .fav-card img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-    .fav-card:hover img{transform:scale(1.05)}
+    .fav-card{position:relative;height:220px;border-radius:20px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.14);cursor:pointer}
+    .fav-card img{width:100%;height:100%;object-fit:cover}
     .fav-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 35%,rgba(0,0,0,.86) 100%);padding:14px;display:flex;flex-direction:column;justify-content:space-between}
-    .pill-top{align-self:flex-start;background:var(--red);color:#fff;font-size:.66rem;font-weight:800;padding:4px 10px;border-radius:50px;text-transform:uppercase}
-    .fav-info h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;line-height:1.15;margin-bottom:8px}
+    .pill-top{align-self:flex-start;background:var(--red);color:#fff;font-size:.66rem;font-weight:800;padding:4px 10px;border-radius:50px}
+    .fav-info h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.22rem;line-height:1.15;margin-bottom:8px}
     .price-pill{display:inline-block;background:var(--yellow);color:#111;font-weight:800;font-size:.88rem;padding:4px 12px;border-radius:50px}
-    /* CARTA CON LÍNEA DE PUNTOS */
     .tabs-box{background:var(--card);padding:14px;border-radius:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:28px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
     .tab{background:transparent;border:none;padding:8px 16px;border-radius:50px;font-weight:700;font-size:.86rem;color:var(--dark);cursor:pointer}
     .tab.active{background:var(--navy);color:#fff}
@@ -94,13 +89,13 @@
       <div class="collage">
         <img src="Logo.JPG" class="c-logo" alt="Logo">
         <img src="Leche-tigre.jpeg.JPG" class="c-main" alt="Leche de tigre">
-        <img src="Tallarín-huancaina.jpeg.JPG" class="c-sub" alt="Tallarín huancaína">
+        <img src="Ceviche.jpeg.JPG" class="c-sub" alt="Ceviche peruano">
         <div class="c-tag"><div class="c-ico">🐟</div><div><strong>Ceviche peruano</strong><br><span style="font-size:.82rem;color:#555">desde $6</span></div></div>
       </div>
     </div>
   </section>
 
-  <div class="marquee"><span>✦ Ceviche peruano ✦ Leche de tigre ✦ Ají de gallina ✦ Pollo a la leña ✦ Lomo saltado ✦ Trío Marino ✦ Tallarines a la huancaína ✦</span></div>
+  <div class="marquee"><span>✦ Ceviche peruano ✦ Leche de tigre ✦ Ají de gallina ✦ Pollo a la leña ✦ Lomo saltado ✦ Trío Marino ✦ Tallarines verde ✦</span></div>
 
   <section class="sec" id="favoritos">
     <div class="kicker">LO MÁS PEDIDO</div>
@@ -200,20 +195,7 @@
         <p style="color:#dcd7c8;font-size:.95rem;margin-bottom:6px">Av. El Placer, Valle Hondo<br>Cabudare, estado Lara</p>
         <p style="color:var(--yellow);font-weight:700;font-size:.88rem;margin-bottom:18px">Miércoles a domingo · 12 pm a 7 pm</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
-Abrir en Google Maps
-💬 Pedir indicaciones
-                </div>
-      <iframe width="100%" height="250" style="border:0;display:block" loading="lazy" src="https://google.com"></iframe>
-    </div>
-  </section>
-
-  <section class="sec" id="dudas">
-    <div class="kicker">PREGUNTAS FRECUENTES</div>
-    <h2 class="title">¿Tienes dudas?</h2>
-    <div class="diamonds"><i style="background:#d97706"></i><i style="background:var(--yellow)"></i><i style="background:#1d4ed8"></i></div>
-    <div id="faqList" style="display:flex;flex-direction:column;gap:12px;max-width:750px;margin:0 auto"></div>
-  </section>
-<div style="position:fixed;bottom:18px;left:16px;z-index:990">
+ <div style="position:fixed;bottom:18px;left:16px;z-index:990">
     <a href="#" style="width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.3)">↑</a>
   </div>
 
@@ -243,7 +225,7 @@ Abrir en Google Maps
   </div>
 
   <script>
-    const menu=[
+    var menu=[
       {id:1,name:"Papas a la Huancaína",cat:"Entradas",price:5,fav:false,tag:"",desc:"Papas bañadas en cremosa salsa de ají amarillo y queso.",img:"Logo.JPG"},
       {id:2,name:"Tequeños",cat:"Entradas",price:6,fav:false,tag:"",desc:"Crujientes tequeños dorados rellenos de queso blanco con salsa de la casa.",img:"Logo.JPG"},
       {id:3,name:"Causa Limeña",cat:"Entradas",price:7,fav:false,tag:"",desc:"Masa de papa amarilla sazonada con limón y ají amarillo rellena con pollo.",img:"Logo.JPG"},
@@ -256,7 +238,7 @@ Abrir en Google Maps
       {id:10,name:"1/2 Pollo a la leña",cat:"Pollos a la leña",price:10.5,fav:false,tag:"",desc:"Medio pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"Logo.JPG"},
       {id:11,name:"1/4 Pollo a la leña",cat:"Pollos a la leña",price:5,fav:false,tag:"",desc:"Cuarto de pollo jugoso asado con leña de algarrobo, papas fritas y ensalada.",img:"Logo.JPG"},
       {id:12,name:"Mostro",cat:"Pollos a la leña",price:7,fav:false,tag:"",desc:"Pollo asado con leña de algarrobo, papas fritas, arroz chaufa y ensalada.",img:"Mostrito.jpeg.JPG"},
-      {id:13,name:"Ají de gallina",cat:"Criollos",price:8,fav:false,tag:"",desc:"Pollo deshilachado en cremosa salsa de ají amarillo, arroz, papa y aceituna.",img:"Logo.JPG"},
+      {id:13,name:"Ají de gallina",cat:"Criollos",price:8,fav:true,tag:"ESPECIAL",desc:"Pollo deshilachado en cremosa salsa de ají amarillo, arroz, papa y aceituna.",img:"ají-gallina.jpg"},
       {id:14,name:"Arroz chaufa",cat:"Criollos",price:3.5,fav:false,tag:"",desc:"Arroz frito salteado con trozos de pollo, huevo frito, especies y cebolla china.",img:"Chaufa.jpeg.JPG"},
       {id:15,name:"Pollo saltado",cat:"Criollos",price:6,fav:false,tag:"",desc:"180grm de pechuga de pollo salteada al wok con tomate, cebolla, arroz y papas fritas.",img:"Logo.JPG"},
       {id:16,name:"Lomo saltado",cat:"Criollos",price:7,fav:false,tag:"",desc:"180grm de lomo de res salteado y flameado con tomate, cebolla, arroz y papas fritas.",img:"Logo.JPG"},
@@ -264,10 +246,10 @@ Abrir en Google Maps
       {id:18,name:"Alitas BBQ",cat:"Criollos",price:5,fav:false,tag:"",desc:"4 alitas en salsa bbq con arroz chaufa, papas fritas y ensalada.",img:"Logo.JPG"},
       {id:19,name:"Anticuchos",cat:"Criollos",price:6,fav:false,tag:"",desc:"3 palos de anticuchos acompañados con papas a la huancaína, ensalada y cremas.",img:"Logo.JPG"},
       {id:20,name:"Tallarines saltado",cat:"Pastas",price:7,fav:false,tag:"",desc:"Tallarines salteados al wok con 180g de carne o pollo, cebolla, tomate y sillao.",img:"Tallarín-saltado.jpeg.JPG"},
-      {id:21,name:"Huancaína con lomo",cat:"Pastas",price:10,fav:true,tag:"ESPECIAL",desc:"Tallarines a la huancaína acompañados con jugoso lomo saltado al wok.",img:"Tallarín-huancaina.jpeg.JPG"},
-      {id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:false,tag:"",desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"Tallarín-verde.jpeg.JPG"}
+      {id:21,name:"Huancaína con lomo",cat:"Pastas",price:10,fav:false,tag:"",desc:"Tallarines a la huancaína acompañados con jugoso lomo saltado al wok.",img:"Logo.JPG"},
+      {id:22,name:"Tallarines verde",cat:"Pastas",price:10,fav:false,tag:"",desc:"Pasta en salsa verde casera con papas a la huancaína y proteína a elección.",img:"tallarín-verde.jpg"}
     ];
-    const faqs=[
+        var faqs=[
       {q:"¿Cómo hago un pedido?",a:"Agrega tus platos en el menú o con el Asistente Inca y presiona Enviar Pedido para abrir WhatsApp con tu orden lista."},
       {q:"¿Hacen delivery?",a:"Sí, realizamos envíos a domicilio en Cabudare y Barquisimeto. Consúltanos tu zona por WhatsApp al (0422) 100-9540."},
       {q:"¿Cómo puedo pagar?",a:"Aceptamos Pago Móvil (CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela 0102), Zelle, efectivo divisas y punto de venta."},
@@ -276,47 +258,51 @@ Abrir en Google Maps
       {q:"¿El Dúo y Trío Marino traen arroz cremoso o suelto?",a:"Puedes pedir tu arroz con mariscos en textura cremosa o textura suelta según tu gusto."},
       {q:"¿Puedo elegir la proteína de los tallarines?",a:"Sí, puedes acompañarlos con lomo de res, pechuga de pollo, chuleta, bisteck o anticuchos."}
     ];
-    let cart=[],started=false;
-    document.getElementById("favGrid").innerHTML=menu.filter(i=>i.fav).map(i=>`<div class="fav-card" onclick="addCart(${i.id})"><img src="${i.img}"><div class="fav-grad"><span class="pill-top">${i.tag}</span><div class="fav-info"><h3>${i.name}</h3><span class="price-pill">$${i.price}</span></div></div></div>`).join("");
-    function renderMenu(cat="Todo",btn){
-      if(btn){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));btn.classList.add("active")}
-      const cats=cat==="Todo"?["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"]:[cat];
-document.getElementById("menuContainer").innerHTML=cats.map(c=><h3 class="cat-head">${c}</h3><div class="menu-list">+menu.filter(i=>i.cat===c).map(i=><div class="m-item"><img src="${i.img}" class="m-thumb"><div class="m-body"><div class="m-row"><h4>${i.name}</h4><span class="dots"></span><span class="m-price">$${i.price}</span></div><p class="m-desc">${i.desc}</p><button class="m-add" onclick="addCart(${i.id})">+ Agregar</button></div></div>).join("")+</div>).join("");
-}
-document.getElementById("faqList").innerHTML=faqs.map((f,idx)=><div onclick="const a=document.getElementById('fa${idx}');a.style.display=a.style.display==='block'?'none':'block'" style="background:var(--card);padding:18px 20px;border-radius:18px;border:1px solid #eadfb9;cursor:pointer"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700"><span>${f.q}</span><span style="background:var(--yellow);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">+</span></div><p id="fa${idx}" style="display:none;margin-top:10px;font-size:.88rem;color:#575143;line-height:1.5">${f.a}</p></div>).join("");
-function openChat(){document.getElementById("chatWin").style.display="flex";document.getElementById("nBadge").style.display="none";if(!started){bot("¡Hola! 👋 Soy el Asistente Inca. Te ayudo con el menú, precios, horario, ubicación o a armar tu pedido.
-¿Qué se te antoja hoy?");chips(["Ver menú","Recomiéndame algo","Ubicación y pagos"]);started=true}}
-function bot(h){const d=document.createElement("div");d.style.cssText="background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.07)";d.innerHTML=h;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
-function usr(t){const d=document.createElement("div");d.style.cssText="background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end";d.textContent=t;const b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
-function chips(a){document.getElementById("cChips").innerHTML=a.map(x=><button onclick="pick('${x}')" style="background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5px 12px;border-radius:50px;font-size:.76rem;font-weight:600;cursor:pointer">${x}</button>).join("")}
-function pick(o){
-usr(o);const l=o.toLowerCase();
-if(l.includes("finalizar")||l.includes("whatsapp")){bot("📲 Abriendo WhatsApp con tu pedido...");setTimeout(sendWA,250);return}
-setTimeout(()=>{
-if(l.includes("ver menú")||l.includes("seguir")){bot("🍽️ Elige una categoría:");chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"])}
-else if(["entradas","del mar","pollos a la leña","criollos","pastas"].includes(l)){
-bot(<strong>${o}:</strong>+menu.filter(i=>i.cat.toLowerCase()===l).map(i=><div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="${i.img}" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">${i.name}</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$${i.price}</span></div></div><button onclick="addCart(${i.id})" class="m-add">+ Agregar</button></div>).join(""));
-chips(["Ver menú","Finalizar pedido"]);
-}else if(l.includes("recomiéndame")){
-bot("⭐ Nuestros favoritos:"+menu.filter(i=>i.fav).map(i=><div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="${i.img}" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">${i.name}</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$${i.price}</span></div></div><button onclick="addCart(${i.id})" class="m-add">+ Agregar</button></div>).join(""));
-chips(["Ver menú","Ubicación y pagos"]);
-}else if(l.includes("ubicación")){
-bot("📍 Av. El Placer, Valle Hondo, Cabudare.
-🕒 Miércoles a domingo · 12 pm a 7 pm.
-💳 Pago Móvil: CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela (0102).");
-chips(["Ver menú","Finalizar pedido"]);
-}
-},200);
-}
-function sendUsr(){const i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";pick(v.toLowerCase().includes("pago")||v.toLowerCase().includes("ubic")?"Ubicación y pagos":"Ver menú")}
-function addCart(id){
-const d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
-const tot=cart.reduce((s,x)=>s+x.price,0);
-document.getElementById("cartBar").style.display="flex";
-document.getElementById("cartTxt").textContent=🛒 ${cart.length} plato(s) ($${tot});
-openChat();
-setTimeout(()=>{bot(✅ Agregaste <strong>${d.name}</strong> ($${d.price}). Total: <strong>$${tot}</strong>.);chips(["Seguir viendo menú","Finalizar pedido"])},150);
-}
+    var cart=[],started=false;
+    document.getElementById("favGrid").innerHTML=menu.filter(function(i){return i.fav}).map(function(i){return '<div class="fav-card" onclick="addCart('+i.id+')"><img src="'+i.img+'"><div class="fav-grad"><span class="pill-top">'+i.tag+'</span><div class="fav-info"><h3>'+i.name+'</h3><span class="price-pill">$'+i.price+'</span></div></div></div>'}).join("");
+    function renderMenu(cat,btn){
+      cat=cat||"Todo";
+      if(btn){document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("active")});btn.classList.add("active")}
+      var cats=cat==="Todo"?["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"]:[cat];
+      document.getElementById("menuContainer").innerHTML=cats.map(function(c){
+        return '<h3 class="cat-head">'+c+'</h3><div class="menu-list">'+menu.filter(function(i){return i.cat===c}).map(function(i){
+          return '<div class="m-item"><img src="'+i.img+'" class="m-thumb"><div class="m-body"><div class="m-row"><h4>'+i.name+'</h4><span class="dots"></span><span class="m-price">$'+i.price+'</span></div><p class="m-desc">'+i.desc+'</p><button class="m-add" onclick="addCart('+i.id+')">+ Agregar</button></div></div>'
+        }).join("")+'</div>'
+      }).join("");
+    }
+    document.getElementById("faqList").innerHTML=faqs.map(function(f,idx){
+      return '<div onclick="var a=document.getElementById(\'fa'+idx+'\');a.style.display=a.style.display===\'block\'?\'none\':\'block\'" style="background:var(--card);padding:18px 20px;border-radius:18px;border:1px solid #eadfb9;cursor:pointer"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700"><span>'+f.q+'</span><span style="background:var(--yellow);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">+</span></div><p id="fa'+idx+'" style="display:none;margin-top:10px;font-size:.88rem;color:#575143;line-height:1.5">'+f.a+'</p></div>'
+    }).join("");
+    function openChat(){document.getElementById("chatWin").style.display="flex";document.getElementById("nBadge").style.display="none";if(!started){bot("¡Hola! 👋 Soy el <strong>Asistente Inca</strong>. Te ayudo con el menú, precios, horario, ubicación o a <strong>armar tu pedido</strong>.<br>¿Qué se te antoja hoy?");chips(["Ver menú","Recomiéndame algo","Ubicación y pagos"]);started=true}}
+    function bot(h){var d=document.createElement("div");d.style.cssText="background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.07)";d.innerHTML=h;var b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+    function usr(t){var d=document.createElement("div");d.style.cssText="background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end";d.textContent=t;var b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
+    function chips(a){document.getElementById("cChips").innerHTML=a.map(function(x){return '<button onclick="pick(\''+x+'\')" style="background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5px 12px;border-radius:50px;font-size:.76rem;font-weight:600;cursor:pointer">'+x+'</button>'}).join("")}
+    function pick(o){
+      usr(o);var l=o.toLowerCase();
+      if(l.indexOf("finalizar")>-1||l.indexOf("whatsapp")>-1){bot("📲 Abriendo WhatsApp con tu pedido...");setTimeout(sendWA,250);return}
+      setTimeout(function(){
+        if(l.indexOf("ver menú")>-1||l.indexOf("seguir")>-1){bot("🍽️ Elige una categoría:");chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"])}
+        else if(["entradas","del mar","pollos a la leña","criollos","pastas"].indexOf(l)>-1){
+          bot("<strong>"+o+":</strong>"+menu.filter(function(i){return i.cat.toLowerCase()===l}).map(function(i){return '<div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="'+i.img+'" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">'+i.name+'</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$'+i.price+'</span></div></div><button onclick="addCart('+i.id+')" class="m-add">+ Agregar</button></div>'}).join(""));
+          chips(["Ver menú","Finalizar pedido"]);
+        }else if(l.indexOf("recomiéndame")>-1){
+          bot("⭐ Nuestros favoritos:"+menu.filter(function(i){return i.fav}).map(function(i){return '<div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="'+i.img+'" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">'+i.name+'</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$'+i.price+'</span></div></div><button onclick="addCart('+i.id+')" class="m-add">+ Agregar</button></div>'}).join(""));
+          chips(["Ver menú","Ubicación y pagos"]);
+        }else if(l.indexOf("ubicación")>-1){
+          bot("📍 Av. El Placer, Valle Hondo, Cabudare.<br>🕒 Miércoles a domingo · 12 pm a 7 pm.<br>💳 Pago Móvil: CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela (0102).");
+          chips(["Ver menú","Finalizar pedido"]);
+        }
+      },200);
+    }
+    function sendUsr(){var i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";pick(v.toLowerCase().indexOf("pago")>-1||v.toLowerCase().indexOf("ubic")>-1?"Ubicación y pagos":"Ver menú")}
+    function addCart(id){
+      var d=menu.find(function(i){return i.id===id});if(!d)return;cart.push(d);
+      var tot=cart.reduce(function(s,x){return s+x.price},0);
+      document.getElementById("cartBar").style.display="flex";
+      document.getElementById("cartTxt").textContent="🛒 "+cart.length+" plato(s) ($"+tot+")";
+      openChat();
+      setTimeout(function(){bot("✅ Agregaste <strong>"+d.name+"</strong> ($"+d.price+"). Total: <strong>$"+tot+"</strong>.");chips(["Seguir viendo menú","Finalizar pedido"])},150);
+    }
     function sendWA(){
       var m="Hola *Tu Punto Inca*, mi pedido es:\n\n";
       if(cart.length){cart.forEach(function(x,i){m+=(i+1)+". "+x.name+" - $"+x.price+"\n"});m+="\n*Total:* $"+cart.reduce(function(s,x){return s+x.price},0)}
