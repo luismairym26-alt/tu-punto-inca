@@ -291,37 +291,41 @@
     function bot(h){var d=document.createElement("div");d.style.cssText="background:#fff;color:#1a1a1a;padding:12px 14px;border-radius:16px 16px 16px 4px;font-size:.86rem;line-height:1.45;max-width:92%;align-self:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.07)";d.innerHTML=h;var b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
     function usr(t){var d=document.createElement("div");d.style.cssText="background:var(--navy);color:#fff;padding:10px 15px;border-radius:16px 16px 4px 16px;font-size:.86rem;max-width:80%;align-self:flex-end";d.textContent=t;var b=document.getElementById("cBody");b.appendChild(d);b.scrollTop=b.scrollHeight}
     function chips(a){document.getElementById("cChips").innerHTML=a.map(function(x){return '<button onclick="pick(\''+x+'\')" style="background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5px 12px;border-radius:50px;font-size:.76rem;font-weight:600;cursor:pointer">'+x+'</button>'}).join("")}
-        function pick(o){
-      usr(o);var l=o.toLowerCase();
-      if(l.indexOf("finalizar")>-1||l.indexOf("whatsapp")>-1){sendWA();return}
-      setTimeout(function(){
-        if(l.indexOf("ver menú")>-1||l.indexOf("seguir")>-1){bot("🍽️ Elige una categoría:");chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"])}
-        else if(["entradas","del mar","pollos a la leña","criollos","pastas"].indexOf(l)>-1){
-          bot("<strong>"+o+":</strong>"+menu.filter(function(i){return i.cat.toLowerCase()===l}).map(function(i){return '<div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="'+i.img+'" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">'+i.name+'</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$'+i.price+'</span></div></div><button onclick="addCart('+i.id+')" class="m-add">+ Agregar</button></div>'}).join(""));
-          chips(["Ver menú","Finalizar pedido"]);
-        }else if(l.indexOf("recomiéndame")>-1){
-          bot("⭐ Nuestros favoritos:"+menu.filter(function(i){return i.fav}).map(function(i){return '<div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="'+i.img+'" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">'+i.name+'</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$'+i.price+'</span></div></div><button onclick="addCart('+i.id+')" class="m-add">+ Agregar</button></div>'}).join(""));
-          chips(["Ver menú","Ubicación y pagos"]);
-        }else if(l.indexOf("ubicación")>-1){
-          bot("📍 Av. El Placer, Valle Hondo, Cabudare.<br>🕒 Miércoles a domingo · 12 pm a 7 pm.<br>💳 Pago Móvil: CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela (0102).");
-          chips(["Ver menú","Finalizar pedido"]);
-        }
-      },200);
-    }
-    function sendUsr(){var i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";pick(v.toLowerCase().indexOf("pago")>-1||v.toLowerCase().indexOf("ubic")>-1?"Ubicación y pagos":"Ver menú")}
-    function addCart(id){
-      var d=menu.find(i=>i.id===id);if(!d)return;cart.push(d);
-      var tot=cart.reduce(function(s,x){return s+x.price},0);
-      document.getElementById("cartBar").style.display="flex";
-      document.getElementById("cartTxt").textContent="🛒 "+cart.length+" plato(s) ($"+tot+")";
-      openChat();
-      setTimeout(function(){bot("✅ Agregaste <strong>"+d.name+"</strong> ($"+d.price+"). Total: <strong>$"+tot+"</strong>.");chips(["Seguir viendo menú","Finalizar pedido"])},150);
-    }
-    function sendWA(){
+            function getWALink(){
       var m="Hola *Tu Punto Inca*, mi pedido es:\n\n";
       if(cart.length){cart.forEach(function(x,i){m+=(i+1)+". "+x.name+" - $"+x.price+"\n"});m+="\n*Total:* $"+cart.reduce(function(s,x){return s+x.price},0)}
       else{m+="Quisiera hacer una consulta sobre el menú."}
-      window.location.href="https://whatsapp.com"+encodeURIComponent(m);
+      return "https://wa.me"+encodeURIComponent(m);
+    }
+    function pick(o){
+      usr(o);var l=o.toLowerCase();
+      setTimeout(function(){
+        if(l.indexOf("ver menú")>-1||l.indexOf("seguir")>-1){bot("🍽️ Elige una categoría:");chips(["Entradas","Del Mar","Pollos a la leña","Criollos","Pastas"])}
+        else if(["entradas","del mar","pollos a la leña","criollos","pastas"].indexOf(l)>-1){
+          bot("<strong>"+o+":</strong>"+menu.filter(function(i){return i.cat.toLowerCase()===l}).map(function(i){return '<div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="'+i.img+'" onerror="this.src=\'Logo.JPG\'" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">'+i.name+'</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$'+i.price+'</span></div></div><button onclick="addCart('+i.id+')" class="m-add">+ Agregar</button></div>'}).join(""));
+          chips(["Ver menú"]);
+        }else if(l.indexOf("recomiéndame")>-1){
+          bot("⭐ Nuestros favoritos:"+menu.filter(function(i){return i.fav}).map(function(i){return '<div style="background:#f5f2e6;border-radius:12px;padding:8px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;align-items:center;gap:8px"><img src="'+i.img+'" onerror="this.src=\'Logo.JPG\'" style="width:44px;height:44px;border-radius:8px;object-fit:cover"><div><h5 style="font-size:.82rem">'+i.name+'</h5><span style="font-size:.84rem;font-weight:700;color:#1e40af">$'+i.price+'</span></div></div><button onclick="addCart('+i.id+')" class="m-add">+ Agregar</button></div>'}).join(""));
+          chips(["Ver menú","Ubicación y pagos"]);
+        }else if(l.indexOf("ubicación")>-1){
+          bot("📍 Av. El Placer, Valle Hondo, Cabudare.<br>🕒 Miércoles a domingo · 12 pm a 7 pm.<br>💳 Pago Móvil: CI 25.433.809 · Tlf 0422-1009540 · Banco Venezuela (0102).");
+          chips(["Ver menú"]);
+        }
+      },150);
+    }
+    function sendUsr(){var i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";pick(v.toLowerCase().indexOf("pago")>-1||v.toLowerCase().indexOf("ubic")>-1?"Ubicación y pagos":"Ver menú")}
+    function addCart(id){
+      var d=menu.find(function(i){return i.id===id});if(!d)return;cart.push(d);
+      var tot=cart.reduce(function(s,x){return s+x.price},0);
+      var link=getWALink();
+      var bar=document.getElementById("cartBar");
+      bar.style.display="flex";
+      bar.innerHTML='<span>🛒 '+cart.length+' plato(s) ($'+tot+')</span><a href="'+link+'" style="background:var(--yellow);color:#111;padding:5px 12px;border-radius:12px;font-weight:700;font-size:.76rem;text-decoration:none">Enviar Pedido 📲</a>';
+      openChat();
+      setTimeout(function(){
+        bot('✅ Agregaste <strong>'+d.name+'</strong> ($'+d.price+').<br><strong>Total: $'+tot+'</strong><br><br><a href="'+link+'" style="display:inline-block;background:#25d366;color:#fff;padding:10px 18px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.85rem">📲 Enviar pedido por WhatsApp ahora</a>');
+        chips(["Seguir viendo menú"]);
+      },150);
     }
     renderMenu();
   </script>
