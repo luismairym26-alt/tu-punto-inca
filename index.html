@@ -228,7 +228,7 @@
     </div>
     <div id="cartBar" style="background:var(--navy);color:#fff;padding:8px 14px;font-size:.8rem;display:none;justify-content:space-between;align-items:center">
       <span id="cartTxt">🛒 0 platos ($0)</span>
-      <button onclick="sendWA()" style="background:var(--yellow);color:#111;border:none;padding:4px 10px;border-radius:12px;font-weight:700;font-size:.75rem;cursor:pointer">Enviar Pedido 📲</button>
+      <a id="waTopBtn" href="https://wa.me" style="background:var(--yellow);color:#111;padding:5px 12px;border-radius:12px;font-weight:700;font-size:.76rem;text-decoration:none">Enviar Pedido 📲</a>
     </div>
     <div id="cBody" style="flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px"></div>
     <div id="cChips" style="display:flex;flex-wrap:wrap;gap:6px;padding:6px 12px 10px"></div>
@@ -314,16 +314,19 @@
       },150);
     }
     function sendUsr(){var i=document.getElementById("cIn"),v=i.value.trim();if(!v)return;usr(v);i.value="";pick(v.toLowerCase().indexOf("pago")>-1||v.toLowerCase().indexOf("ubic")>-1?"Ubicación y pagos":"Ver menú")}
-    function addCart(id){
+        function addCart(id){
       var d=menu.find(function(i){return i.id===id});if(!d)return;cart.push(d);
       var tot=cart.reduce(function(s,x){return s+x.price},0);
-      var link=getWALink();
-      var bar=document.getElementById("cartBar");
-      bar.style.display="flex";
-      bar.innerHTML='<span>🛒 '+cart.length+' plato(s) ($'+tot+')</span><a href="'+link+'" style="background:var(--yellow);color:#111;padding:5px 12px;border-radius:12px;font-weight:700;font-size:.76rem;text-decoration:none">Enviar Pedido 📲</a>';
+      var msg="Hola *Tu Punto Inca*, mi pedido es:\n\n";
+      cart.forEach(function(x,i){msg+=(i+1)+". "+x.name+" - $"+x.price+"\n"});
+      msg+="\n*Total:* $"+tot;
+      var link="https://wa.me"+encodeURIComponent(msg);
+      document.getElementById("cartBar").style.display="flex";
+      document.getElementById("cartTxt").textContent="🛒 "+cart.length+" plato(s) ($"+tot+")";
+      document.getElementById("waTopBtn").href=link;
       openChat();
       setTimeout(function(){
-        bot('✅ Agregaste <strong>'+d.name+'</strong> ($'+d.price+').<br><strong>Total: $'+tot+'</strong><br><br><a href="'+link+'" style="display:inline-block;background:#25d366;color:#fff;padding:10px 18px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.85rem">📲 Enviar pedido por WhatsApp ahora</a>');
+        bot('✅ Agregaste <strong>'+d.name+'</strong> ($'+d.price+').<br><strong>Total: $'+tot+'</strong><br><br><a href="'+link+'" style="display:inline-block;background:#25d366;color:#fff;padding:10px 18px;border-radius:50px;font-weight:700;text-decoration:none;font-size:.85rem">📲 Enviar pedido por WhatsApp</a>');
         chips(["Seguir viendo menú"]);
       },150);
     }
